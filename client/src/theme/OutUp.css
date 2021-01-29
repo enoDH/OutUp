@@ -1,0 +1,228 @@
+body {
+    background-color: #161616;
+}
+
+nav{
+    background-color:  #1e1f26;
+}
+
+h5{
+    margin-top: 0;
+    color:#FFFFFF
+}
+
+.row .col{
+    padding: 0.75rem 0.75rem 0.75rem 0.75rem;
+}
+
+a{
+    text-decoration: none;
+    color: #FC4E4E;
+}
+
+@media (min-width: 260px){
+    .black-field{
+        display: block;
+        color: #FFFFFF;
+        background-color:#161616;
+        border-radius: 50px;
+        width: 37%;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 536px){
+    video.responsive-video{
+        width: 75%;
+    }
+
+    .black-field{
+        display: block;
+        color: #FFFFFF;
+        background-color:#161616;
+        border-radius: 50px;
+        width: 32%;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 764px){
+    video.responsive-video{
+        width: 65%;
+    }
+
+    .black-field{
+        display: block;
+        color: #FFFFFF;
+        background-color:#161616;
+        border-radius: 50px;
+        width: 22%;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 900px){
+    video.responsive-video{
+        width: 60%;
+    }
+
+    .black-field{
+        display: block;
+        color: #FFFFFF;
+        background-color:#161616;
+        border-radius: 50px;
+        width: 22%;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 1200px){
+    video.responsive-video{
+        width: 55%;
+    }
+
+    .black-field{
+        display: block;
+        color: #FFFFFF;
+        background-color:#161616;
+        border-radius: 50px;
+        width: 22%;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 1400px){
+    video.responsive-video{
+        width: 40%;
+    }
+
+    .black-field{
+        display: block;
+        color: #FFFFFF;
+        background-color:#161616;
+        border-radius: 50px;
+        width: 12%;
+        padding: 10px;
+    }
+}
+
+.reps{
+    display: block;
+    background-color: #212121;
+    border-radius: 10px
+}
+
+.register{
+    padding-top: 5%;
+    display: block;
+}
+.register-form{
+    background-color: #212121;
+    display: block;
+    border-radius: 50px;
+}
+
+.btn_login{
+    background-color: #FC4E4E;
+    border-radius: 30px;
+    border-style: none;
+    color: #FFFFFF;
+}
+
+.create-training{
+    margin-top: 1%;
+    background-color:#2B2B2B;
+    border-radius: 50px;
+    color: #FFFFFF;
+}
+
+.training-week{
+    background-color: #212121;
+    color: #FFFFFF;
+    border-radius: 50px;
+    margin-bottom: 30px;
+}
+
+input{
+    color: #FFFFFF;
+}
+
+textarea{
+    color: #FFFFFF;
+}
+
+.add-video-database{
+    border-radius: 70px;
+    background-color:#212121;
+    margin-bottom: 30px;
+}
+
+.btn{
+    background-color: #FC4E4E;
+}
+
+.video-table{
+    color: #FFFFFF;
+}
+
+.workout-day{
+    display: block;
+    background-color: #161616;
+    border-radius: 70px;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.workout-day a {
+    display: block;
+    text-align: center;
+    height: 100%;
+    color: #FFFFFF;
+}
+
+.workout-day a:hover {
+    display: block;
+    text-align: center;
+    height: 100%;
+    color: #FC4E4E;
+}
+
+.support-us{
+    display: block;
+    background-color: #FFFFFF;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+
+button:disabled{
+    background-color: #161616;
+}
+
+.dn{
+    display: none;
+}
+
+select{
+    display: block;
+    background-color: #212121;
+    color: #FFFFFF;
+}
+
+.modal-exercises {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    background-color: #1e1f26;
+    padding: 0;
+    max-height: 90%;
+    width: 95%;
+    margin: auto;
+    overflow-y: auto;
+    border-radius: 2px;
+    will-change: top, opacity;
+}
+  
+.modal-exercises:focus {
+    outline: none;
+}

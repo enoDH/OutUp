@@ -1,0 +1,49 @@
+<div class="row">
+    <h5 class="col s12 m10 offset-m1 l6 
+        offset-l3 xl6 offset-xl3 center-align 
+        create-training z-depth-5">Workout
+    </h5>
+
+
+    <div *ngIf="workouts$ | async as workout; else loader">
+        <div *ngIf="workout.length !== 0; else empty">
+            <div class="col s12 m6" *ngFor="let item of workout">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{item.image}}">
+                        <a class="btn-floating halfway-fab waves-effect waves-light red"
+                            [routerLink]="['/workout', item._id]">
+                            <i class="material-icons">play_arrow</i>
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">{{item.name}}</span>
+                        <p>{{item.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-template #empty>
+            <div class="col s12 center">
+                <h5>Your workout list is empty! Add new <a routerLink="/create">workout</a>?</h5>
+            </div>
+        </ng-template>
+    </div>
+    <ng-template #loader>
+        <app-loader></app-loader>
+    </ng-template>
+
+
+</div>
+
+
+<div class="fixed-action-btn" #floating_btn>
+    <a class="btn-floating btn-large red z-depth-5">
+        <i class="large material-icons">add</i>
+    </a>
+    <ul>
+        <li><a class="btn-floating red" routerLink="/create"><i class="material-icons">create</i></a></li>
+        <li><a class="btn-floating green" routerLink="/add"><i class="material-icons">vpn_key</i></a></li>
+        <li><a class="btn-floating blue" routerLink="/base"><i class="material-icons">build</i></a></li>
+    </ul>
+</div>

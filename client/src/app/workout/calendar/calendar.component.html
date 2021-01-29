@@ -1,0 +1,22 @@
+<div class="row">
+  <h5 class="col s12 m10 offset-m1 l6 
+      offset-l3 xl6 offset-xl3 center-align 
+      create-training z-depth-5">Calendar</h5>
+
+  <div *ngIf="workout$ | async as calendar; else loader">
+    <div *ngFor="let weeks of calendar.weeks; let i = index">
+      <div class="training-week col s12 m12 l12 xl12 z-depth-5">
+
+        <div class="black-field">
+          <h6>Week #{{i+1}}</h6>
+        </div>
+        <div class="col s12 m5 l5 xl5 workout-day" *ngFor="let day of calendar.weeks[i].days; let j = index">
+          <a routerLink="/workout/{{calendar._id}}/{{day._id}}">Day #{{j+1}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loader>
+    <app-loader></app-loader>
+  </ng-template>
+</div>

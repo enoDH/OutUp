@@ -11,11 +11,11 @@ export class WorkoutService {
   constructor(private _http: HttpClient) { }
 
   getAllWorkouts(): Observable<Workout[]>{
-    return this._http.get<Workout[]>('http://localhost:3000/api/training');
+    return this._http.get<Workout[]>('/api/training');
   }
 
   getWorkout(id: string): Observable<Workout>{
-    return this._http.get<Workout>(`http://localhost:3000/api/training/${id}`);
+    return this._http.get<Workout>(`/api/training/${id}`);
   }
 
   updateStatus(_id :string, id: string, status: boolean): Observable<Workout>{

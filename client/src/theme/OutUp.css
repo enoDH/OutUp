@@ -226,3 +226,7 @@ select{
 .modal-exercises:focus {
     outline: none;
 }
+
+.clr-White{
+    color: #FFFFFF;
+}

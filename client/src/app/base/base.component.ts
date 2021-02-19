@@ -1,3 +1,4 @@
+import { rendererTypeName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -12,6 +13,7 @@ import { BaseService } from '../shared/services/base.service';
 export class BaseComponent implements OnInit {
   form: FormGroup;
   video: File;
+  videoLoading: boolean = false;
   videoPreview: string | ArrayBuffer;
   base$: Observable<Base[]>;
 
@@ -27,13 +29,19 @@ export class BaseComponent implements OnInit {
 
   onFileSelect(event: any): void {
     const file = event.target.files[0];
+    this.videoLoading = true;
     this.video = file;
 
     const reader = new FileReader();
 
     reader.onload = () => {
       this.videoPreview = reader.result;
+      this.videoLoading = false;
     };
+
+    reader.onerror = () => {
+      MaterialService.toast(event.error);
+    }
 
     reader.readAsDataURL(file);
   }

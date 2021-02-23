@@ -19,12 +19,12 @@
                 <div class="col s12 m12 12 xl12 file-field input-field">
                     <div class="btn">
                         <span>File</span>
-                        <input type="file" (change)="onFileSelect($event)"
+                        <input type="file" (change)="onFileSelect($event)" accept=".mp4"
                             [ngClass]="{'invalid': form.get('video').invalid && form.get('video').touched}"
                             [disabled]="form.disabled" formControlName="video">
                     </div>
                     <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
+                        <input class="file-path validate" type="text" #inputRef>
                         <span class="helper-text red-text" *ngIf="form.get('video').invalid && form.get('video').touched">
                             <span *ngIf="form.get('video').errors['required']">
                                 The video field must be filled!
@@ -36,9 +36,12 @@
         </div>
         <div class="col s12 m6 l6 xl6">
             <div *ngIf="videoLoading == false; else loading">
-                <video class="col s12 m12 l12 xl12 responsive-video" controls>
-                    <source [src]="videoPreview" type="video/mp4" *ngIf="videoPreview">
+                <video *ngIf="videoPreview; else view" class="col s12 m12 l12 xl12 responsive-video" controls>
+                    <source [src]="videoPreview" type="video/mp4">
                 </video>
+                <ng-template #view>
+                    <video class="col s12 m12 l12 xl12 responsive-video" controls></video>
+                </ng-template>
             </div>
             <ng-template #loading>
                 <app-loader></app-loader>

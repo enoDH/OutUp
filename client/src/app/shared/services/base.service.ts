@@ -33,4 +33,8 @@ export class BaseService {
   delete(id: string): Observable<Message>{
     return this._http.delete<Message>(`/api/base/${id}`);
   }
+
+  updateUse(id: string, use: number): Observable<Base>{
+    return this._http.patch<Base>('/api/base', {id: id, use: use});
+  }
 }

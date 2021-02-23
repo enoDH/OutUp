@@ -13,6 +13,10 @@ const baseSchema = new Schema({
     video: {
         type: String,
         default: ''
+    },
+    use: {
+        type: Number,
+        default: 0
     }
 });
 

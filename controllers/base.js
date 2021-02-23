@@ -1,5 +1,9 @@
-const Base = require('../models/Base')
-const errorHandler = require('../utils/errorHandler')
+const Base = require('../models/Base');
+const errorHandler = require('../utils/errorHandler');
+const serverPath = require('../localPath');
+
+const fs = require('fs');
+const path = require('path');
 
 module.exports.createExercise = async function (req, res) {
     try {
@@ -37,9 +41,35 @@ module.exports.getExercise = async function (req, res) {
 
 module.exports.deleteExercise = async function (req, res) {
     try {
-        await Base.findOneAndDelete({_id: req.params.id});
+        const base = await Base.findById(req.params.id);
         
-        res.status(200).json({message: 'Exercise deleted!'});
+        fs.unlink( path.resolve( serverPath.path, base.video), async (err) => {
+            if (err) {
+                res.status(500).json({message: 'Failed to delete exercise!'});
+            }
+            else {
+                await Base.findOneAndDelete({_id: req.params.id});
+                res.status(200).json({message: 'Exercise deleted!'});
+            }
+        });
+    } catch (e) {
+        errorHandler(res, e);
+    }
+}
+
+module.exports.updateUse = async function (req, res) {
+    try {
+        const updated = {
+            use: req.body.use
+        };
+
+        const base = await Base.findByIdAndUpdate(
+            { _id: req.body.id },
+            { $set: updated },
+            { new: true }
+        );
+
+        res.status(200).json(base);
     } catch (e) {
         errorHandler(res, e);
     }

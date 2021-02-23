@@ -8,6 +8,7 @@ export interface Base{
     user?: string,
     nema: string,
     video: string,
+    use?: number,
     _id?: string
 }
 

@@ -110,6 +110,22 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy {
     (this.weekForm.get(`weeks.${week}.days.${day}.exercises`) as FormArray).push(this.exercise());
   }
 
+  removeExercise(week: number, day: number): void {
+    (this.weekForm.get(`weeks.${week}.days.${day}.exercises`) as FormArray).removeAt((this.weekForm.get(`weeks.${week}.days.${day}.exercises`) as FormArray).length - 1);
+  }
+
+  checkValidButtonRemove(week: number, day: number): boolean {
+    let status: boolean = false;
+
+    if ((this.weekForm.get(`weeks.${week}.days.${day}.exercises`) as FormArray).length == 1) {
+      status = false;
+    } else {
+      status = true;
+    }
+
+    return status;
+  }
+
   formCreate(week: number, day: number): void {
     for (let i = 0; i < week; i++) {
       if (i > 0) {

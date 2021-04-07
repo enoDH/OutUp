@@ -33,7 +33,7 @@ a{
 
 @media (min-width: 536px){
     video.responsive-video{
-        width: 75%;
+        width: 80%;
     }
 
     .black-field{
@@ -48,7 +48,7 @@ a{
 
 @media (min-width: 764px){
     video.responsive-video{
-        width: 65%;
+        width: 70%;
     }
 
     .black-field{
@@ -107,6 +107,7 @@ a{
 }
 
 .reps{
+    padding: 0 24px;
     display: block;
     background-color: #212121;
     border-radius: 10px
@@ -208,8 +209,8 @@ select{
     color: #FFFFFF;
 }
 
-.modal-exercises {
-    display: none;
+.exercise-window {
+    display: block;
     position: fixed;
     left: 0;
     right: 0;
@@ -217,14 +218,11 @@ select{
     padding: 0;
     max-height: 90%;
     width: 95%;
-    margin: auto;
+    margin: 1% auto;
     overflow-y: auto;
     border-radius: 2px;
     will-change: top, opacity;
-}
-  
-.modal-exercises:focus {
-    outline: none;
+    border-radius: 50px;
 }
 
 .clr-White{

@@ -1,0 +1,39 @@
+<div class="exercise-window z-depth-5" *ngIf="data.length != 0; else loader">
+
+    <div class="row" *ngFor="let _data of data">
+        <div class="col s12 center-align">
+            <video id="videoRef" class="responsive-video z-depth-5" controls>
+                <source src="{{_data.video}}" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
+            <div class="reps z-depth-3">
+                <form [formGroup]="form">
+                    <div formArrayName="reps">
+                        <div *ngFor="let reps of _data.reps; let i = index">
+                            <p>
+                                <label>
+                                    <input type="checkbox" formControlName="{{i}}">
+                                    <span>{{reps}} reps</span>
+                                </label>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <button class="btn_login col s4 offset-s1 m4 offset-m2 z-depth-4" 
+            (click)="back()">
+                Back
+            </button>
+            <button class="btn_login col s4 offset-s1 m4 offset-m2 z-depth-4" 
+            (click)="done()" 
+            [disabled]="form.invalid">
+                Done
+            </button>
+        </div>
+    </div>
+</div>
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>

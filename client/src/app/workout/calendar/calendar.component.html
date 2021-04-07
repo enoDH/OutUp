@@ -3,15 +3,15 @@
       offset-l3 xl6 offset-xl3 center-align 
       create-training z-depth-5">Calendar</h5>
 
-  <div *ngIf="workout$ | async as calendar; else loader">
-    <div *ngFor="let weeks of calendar.weeks; let i = index">
+  <div *ngIf="workout$ | async as workout; else loader">
+    <div *ngFor="let weeks of workout.weeks; let i = index">
       <div class="training-week col s12 m12 l12 xl12 z-depth-5">
 
         <div class="black-field">
           <h6>Week #{{i+1}}</h6>
         </div>
-        <div class="col s12 m5 l5 xl5 workout-day" *ngFor="let day of calendar.weeks[i].days; let j = index">
-          <a routerLink="/workout/{{calendar._id}}/{{day._id}}">Day #{{j+1}}</a>
+        <div class="col s12 m5 l5 xl5 workout-day" *ngFor="let day of workout.weeks[i].days; let j = index">
+          <a [routerLink]="['/exercises']" [state]="{ workoutId: workout._id, dayId: day._id}">Day #{{j+1}}</a>
         </div>
       </div>
     </div>

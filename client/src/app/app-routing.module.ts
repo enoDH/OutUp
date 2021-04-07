@@ -11,6 +11,7 @@ import { CalendarComponent } from './workout/calendar/calendar.component';
 import { CreateComponent } from './create/create.component';
 import { WorkoutComponent } from './workout/workout.component';
 import { ExercisesComponent } from './workout/calendar/exercises/exercises.component';
+import { ExerciseComponent } from './workout/calendar/exercises/exercise/exercise.component';
 
 const routes: Routes = [
     {
@@ -35,7 +36,10 @@ const routes: Routes = [
                 path: 'workout/:id', component: CalendarComponent
             },
             {
-                path: 'workout/:id/:id', component: ExercisesComponent
+                path: 'exercises', component: ExercisesComponent
+            },
+            {
+                path: 'exercise', component: ExerciseComponent
             },
             {
                 path: 'create', component: CreateComponent

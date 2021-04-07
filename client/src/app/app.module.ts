@@ -17,8 +17,7 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
 import { CalendarComponent } from './workout/calendar/calendar.component';
 import { CreateComponent } from './create/create.component';
 import { ExercisesComponent } from './workout/calendar/exercises/exercises.component';
-
-
+import { ExerciseComponent } from './workout/calendar/exercises/exercise/exercise.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,8 @@ import { ExercisesComponent } from './workout/calendar/exercises/exercises.compo
     LoaderComponent,
     CalendarComponent,
     CreateComponent,
-    ExercisesComponent
+    ExercisesComponent,
+    ExerciseComponent
   ],
   imports: [
     BrowserModule,

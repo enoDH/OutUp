@@ -18,10 +18,10 @@ export class WorkoutService {
     return this._http.get<Workout>(`/api/training/${id}`);
   }
 
-  updateStatus(_id :string, id: string, status: boolean): Observable<Workout>{
+  updateStatus(id :string, exerciseId: string, status: boolean): Observable<Workout>{
     const data = {
-      _id: _id,
-      exerciseId: id,
+      _id: id,
+      exerciseId: exerciseId,
       status: !status
     };
     return this._http.patch<Workout>('/api/training', data);

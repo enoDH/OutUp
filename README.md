@@ -28,7 +28,7 @@ After installing all the dependencies, you can start the project (__in the root 
 __You can view all available startup commands in the package.json file__
 
 ## Changelog
-Here you can see what has changed [here]()
+Here you can see what has changed [here](https://github.com/enoDH/OutUp/blob/main/CHANGELOG.md)
 
 ## Want to Help?
 If you find a bug in the code or find a better solution, you can just offer us your solution.

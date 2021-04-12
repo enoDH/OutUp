@@ -20,15 +20,24 @@ a{
     color: #FC4E4E;
 }
 
-@media (min-width: 260px){
-    .black-field{
-        display: block;
-        color: #FFFFFF;
-        background-color:#161616;
-        border-radius: 50px;
-        width: 37%;
-        padding: 10px;
-    }
+.black-field{
+    display: block;
+    color: #FFFFFF;
+    background-color:#161616;
+    border-radius: 50px;
+    width: 37%;
+    padding: 10px;
+    max-width: 260px;
+}
+
+.black-field-large{
+    display: inline-block;
+    color: #FFFFFF;
+    background-color:#161616;
+    border-radius: 50px;
+    width: 90%;
+    padding: 12px;
+    max-width: 260px;
 }
 
 @media (min-width: 536px){
@@ -37,12 +46,11 @@ a{
     }
 
     .black-field{
-        display: block;
-        color: #FFFFFF;
-        background-color:#161616;
-        border-radius: 50px;
         width: 32%;
-        padding: 10px;
+    }
+
+    .black-field-large{
+        width: 80%;
     }
 }
 
@@ -52,12 +60,11 @@ a{
     }
 
     .black-field{
-        display: block;
-        color: #FFFFFF;
-        background-color:#161616;
-        border-radius: 50px;
         width: 22%;
-        padding: 10px;
+    }
+
+    .black-field-large{
+        width: 70%;
     }
 }
 
@@ -67,12 +74,11 @@ a{
     }
 
     .black-field{
-        display: block;
-        color: #FFFFFF;
-        background-color:#161616;
-        border-radius: 50px;
         width: 22%;
-        padding: 10px;
+    }
+
+    .black-field-large{
+        width: 50%;
     }
 }
 
@@ -82,12 +88,11 @@ a{
     }
 
     .black-field{
-        display: block;
-        color: #FFFFFF;
-        background-color:#161616;
-        border-radius: 50px;
         width: 22%;
-        padding: 10px;
+    }
+
+    .black-field-large{
+        width: 50%;
     }
 }
 
@@ -97,12 +102,11 @@ a{
     }
 
     .black-field{
-        display: block;
-        color: #FFFFFF;
-        background-color:#161616;
-        border-radius: 50px;
         width: 12%;
-        padding: 10px;
+    }
+
+    .black-field-large{
+        width: 30%;
     }
 }
 
@@ -227,4 +231,16 @@ select{
 
 .clr-White{
     color: #FFFFFF;
+}
+
+.activation-key{
+    display: block;
+    border-radius: 50px;
+    background-color: #212121;
+    margin: 20% 0;
+    padding: 12px 24px;
+}
+
+.input-act-k{
+    text-align: center;
 }

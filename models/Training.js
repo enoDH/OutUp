@@ -2,10 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const trainingSchema = new Schema({
-    user: {
+    owner: {
         ref: 'users',
         type: Schema.Types.ObjectId
     },
+    users: [
+        {
+            ref: 'users',
+            type: Schema.Types.ObjectId
+        }
+    ],
     name: {
         type: String,
     },

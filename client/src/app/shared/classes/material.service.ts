@@ -9,31 +9,31 @@ export class MaterialService {
 
   constructor() { }
 
-  static toast(message: string): void{
-    M.toast({html: message});
+  static toast(message: string): void {
+    M.toast({ html: message });
   }
 
-  static initializeSideMenu(ref: ElementRef):  MaterialInstance{
+  static initializeSideMenu(ref: ElementRef): MaterialInstance {
     return M.Sidenav.init(ref.nativeElement);
   }
 
-  static initializeFloatingButton(ref: ElementRef): void{
+  static initializeFloatingButton(ref: ElementRef): void {
     M.FloatingActionButton.init(ref.nativeElement);
   }
 
-  static updateTextInputs(): void{
+  static updateTextInputs(): void {
     M.updateTextFields();
   }
 
-  static initModal(ref: ElementRef): MaterialInstance{
+  static initModal(ref: ElementRef): MaterialInstance {
     return M.Modal.init(ref.nativeElement);
   }
 
-  static initTooltip(ref: ElementRef): MaterialInstance{
+  static initTooltip(ref: ElementRef): MaterialInstance {
     return M.Tooltip.init(ref.nativeElement);
   }
 
-  static initDatepicker(ref: ElementRef, onClose: () => void): MaterialDatepicker{
+  static initDatepicker(ref: ElementRef, onClose: () => void): MaterialDatepicker {
     return M.Datepicker.init(ref.nativeElement, {
       format: 'dd.mm.yyyy',
       showClearBtn: true,
@@ -46,12 +46,12 @@ export class MaterialService {
   }
 }
 
-export interface MaterialInstance{
+export interface MaterialInstance {
   open?(): void;
   close?(): void;
   destroy?(): void;
 }
 
-export interface MaterialDatepicker extends MaterialInstance{
+export interface MaterialDatepicker extends MaterialInstance {
   date?: Date;
 }

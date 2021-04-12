@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col s12">
+        <div class="center">
+            <div class="row activation-key z-depth-5">
+                <div class="black-field-large">
+                    <h5 class="clr-White">Enter the key</h5>
+                </div>
+                <div class="input-field col s12">
+                    <input type="text" class="validate input-act-k" [formControl]="key">
+                    <span *ngIf="key.invalid && key.touched" class="helper-text red-text">
+                        <span>The key field must be filled!</span>
+                    </span>
+                </div>
+                <button class="btn_login col s4 offset-s4 z-depth-4" [disabled]="key.invalid"
+                    (click)="activate(key.value)">Activate</button>
+            </div>
+        </div>
+    </div>
+</div>

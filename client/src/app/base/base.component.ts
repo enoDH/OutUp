@@ -79,19 +79,10 @@ export class BaseComponent implements OnInit, OnDestroy {
   }
 
   deleteExercise(id: string): void {
-    this.bbSub = this._baseService.getExercise(id).subscribe(
-      base => {
-        if (base.use > 0) {
-          MaterialService.toast("You cannot delete this exercise because it is in use!")
-        } else {
-          this._baseService.delete(id).subscribe(
-            response => MaterialService.toast(response.message),
-            error => MaterialService.toast(error.error.message),
-            () => this.base$ = this._baseService.getAll()
-          );
-        }
-      },
-      error => MaterialService.toast(error.error.message)
+    this.bbSub = this._baseService.delete(id).subscribe(
+      response => MaterialService.toast(response.message),
+      error => MaterialService.toast(error.error.message),
+      () => this.base$ = this._baseService.getAll()
     );
   }
 }

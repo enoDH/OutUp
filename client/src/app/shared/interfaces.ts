@@ -1,10 +1,10 @@
-export interface User{
+export interface User {
     name: string,
     login: string,
     password: string
 }
 
-export interface Base{
+export interface Base {
     user?: string,
     nema: string,
     video: string,
@@ -12,17 +12,17 @@ export interface Base{
     _id?: string
 }
 
-export interface Message{
+export interface Message {
     message: string
 }
 
-export interface Support{
+export interface Support {
     user?: string,
     theme: string,
     description: string
 }
 
-export interface Workout{
+export interface Workout {
     user?: string,
     name: string,
     description: string,
@@ -33,7 +33,7 @@ export interface Workout{
         days: [
             exercise: string,
             reps: [],
-            status?: boolean 
+            status?: boolean
         ],
     ],
     image?: string,

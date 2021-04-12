@@ -9,6 +9,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), upload.single('
 router.get('/', passport.authenticate('jwt', {session: false}), controller.getAll);
 router.get('/:id', passport.authenticate('jwt', {session: false}), controller.getById);
 router.patch('/', passport.authenticate('jwt', {session: false}), controller.update);
+router.patch('/activation', passport.authenticate('jwt', {session: false}), controller.updateUsers);
 router.delete('/:id', passport.authenticate('jwt', {session: false}), controller.delete);
 
 module.exports = router;

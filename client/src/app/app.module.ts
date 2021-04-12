@@ -18,6 +18,7 @@ import { CalendarComponent } from './workout/calendar/calendar.component';
 import { CreateComponent } from './create/create.component';
 import { ExercisesComponent } from './workout/calendar/exercises/exercises.component';
 import { ExerciseComponent } from './workout/calendar/exercises/exercise/exercise.component';
+import { ActivationKeyComponent } from './activation-key/activation-key.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ExerciseComponent } from './workout/calendar/exercises/exercise/exercis
     CalendarComponent,
     CreateComponent,
     ExercisesComponent,
-    ExerciseComponent
+    ExerciseComponent,
+    ActivationKeyComponent
   ],
   imports: [
     BrowserModule,

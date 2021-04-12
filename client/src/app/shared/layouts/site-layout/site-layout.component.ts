@@ -13,13 +13,13 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
 
   links = [
-    { url: '/workout', name: 'Workout'},
-    { url: '/base', name: 'Base'},
-    { url: '/support', name: 'Support'}
+    { url: '/workout', name: 'Workout' },
+    { url: '/base', name: 'Base' },
+    { url: '/support', name: 'Support' }
   ];
 
   constructor(private _auth: AuthService,
-              private _router: Router) { }
+    private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +32,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.modal.destroy();
   }
 
-  logout(event: Event): void{
+  logout(event: Event): void {
     event.preventDefault();
     this._auth.loguot();
     this._router.navigate(['/login']);

@@ -1,3 +1,11 @@
+## Refactoring - OutUp v0.0.4
+### Features
+* Added the ability to share workouts via the key
+* Added the ability to delete workouts
+
+### Bug Fixes
+* Fixed the ability to delete workouts without deleting related files
+
 ## Create CHANGELOG.md
 Add CHANGELOG.md
 

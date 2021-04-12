@@ -42,14 +42,18 @@ module.exports.getExercise = async function (req, res) {
 module.exports.deleteExercise = async function (req, res) {
     try {
         const base = await Base.findById(req.params.id);
-        
-        fs.unlink( path.resolve( serverPath.path, base.video), async (err) => {
+
+        if (base.use > 0) {
+            return res.status(403).json({message: 'You cannot delete this exercise because it is in use!'});
+        }
+
+        fs.unlink(path.resolve(serverPath.path, base.video), async (err) => {
             if (err) {
-                res.status(500).json({message: 'Failed to delete exercise!'});
+                return res.status(500).json({ message: 'Failed to delete exercise!' });
             }
             else {
-                await Base.findOneAndDelete({_id: req.params.id});
-                res.status(200).json({message: 'Exercise deleted!'});
+                await Base.findOneAndDelete({ _id: req.params.id });
+                res.status(200).json({ message: 'Exercise deleted!' });
             }
         });
     } catch (e) {
@@ -59,36 +63,14 @@ module.exports.deleteExercise = async function (req, res) {
 
 module.exports.updateUse = async function (req, res) {
     try {
-        const updated = {
-            use: req.body.use
-        };
-
         const base = await Base.findByIdAndUpdate(
             { _id: req.body.id },
-            { $set: updated },
+            { $inc: { use: 1 } },
             { new: true }
         );
 
-        res.status(200).json(base);
+        res.status(200).json({message: 'Updated!'});
     } catch (e) {
         errorHandler(res, e);
     }
 }
-
-// module.exports.update = async function (req, res) {
-//     try {
-//         const updated = {
-//             name: req.body.name
-//         };
-
-//         const position = await Position.findByIdAndUpdate(
-//             { _id: req.params.id },
-//             { $set: updated },
-//             { new: true }
-//         );
-
-//         res.status(200).json(position);
-//     } catch (e) {
-//         errorHandler(res, e);
-//     }
-// }

@@ -37,9 +37,9 @@ module.exports.getSupportRequest = async function (req, res) {
 
 module.exports.deleteSupportRequest = async function (req, res) {
     try {
-        await Support.findByIdAndDelete({ _id: req.params.id});
-        
-        res.status(200).json({message: 'Support request deleted!'});
+        await Support.findByIdAndDelete({ _id: req.params.id });
+
+        res.status(200).json({ message: 'Support request deleted!' });
     } catch (e) {
         errorHandler(res, e);
     }

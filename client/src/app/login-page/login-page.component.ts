@@ -13,9 +13,9 @@ export class LoginPageComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   aSub: Subscription;
-  constructor(private _auth: AuthService, 
-              private _router: Router,
-              private _route: ActivatedRoute) { }
+  constructor(private _auth: AuthService,
+    private _router: Router,
+    private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -24,23 +24,23 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     });
 
     this._route.queryParams.subscribe((params: Params) => {
-      if(params['registered']){
+      if (params['registered']) {
         MaterialService.toast('You can now log in using your data!');
-      } else if (params['accessDenied']){
+      } else if (params['accessDenied']) {
         MaterialService.toast('You need to log in!');
-      } else if (params['sessionFailed']){
+      } else if (params['sessionFailed']) {
         MaterialService.toast('Please log in again!');
       }
     });
   }
 
-  ngOnDestroy(){
-    if(this.aSub){
+  ngOnDestroy() {
+    if (this.aSub) {
       this.aSub.unsubscribe();
     }
   }
 
-  onSubmit(): void{
+  onSubmit(): void {
     this.form.disable();
     this.aSub = this._auth.login(this.form.value).subscribe(
       () => {

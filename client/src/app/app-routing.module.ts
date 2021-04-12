@@ -12,6 +12,7 @@ import { CreateComponent } from './create/create.component';
 import { WorkoutComponent } from './workout/workout.component';
 import { ExercisesComponent } from './workout/calendar/exercises/exercises.component';
 import { ExerciseComponent } from './workout/calendar/exercises/exercise/exercise.component';
+import { ActivationKeyComponent } from './activation-key/activation-key.component';
 
 const routes: Routes = [
     {
@@ -31,6 +32,9 @@ const routes: Routes = [
         path: '', component: SiteLayoutComponent, canActivate: [AuthGuard], children: [
             {
                 path: 'workout', component: WorkoutComponent
+            },
+            {
+                path: 'activation', component: ActivationKeyComponent
             },
             {
                 path: 'workout/:id', component: CalendarComponent

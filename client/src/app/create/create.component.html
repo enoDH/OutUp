@@ -1,12 +1,10 @@
 <div class="row">
     <h5 class="col s12 m10 offset-m1 l6 offset-l3 xl6 offset-xl3 create-training z-depth-5 center-align">Create
         new training</h5>
-    <form class="col s12 m12 l12 xl12"
-    [formGroup]="initForm" (ngSubmit)="onSubmitInit()" [hidden]="initForm.disabled">
-        <div class="col s12 m6 l6 xl6">
+    <form class="col s12" [formGroup]="initForm" (ngSubmit)="onSubmitInit()" [hidden]="initForm.disabled">
+        <div class="col s12 m6">
             <div class="input-field col s12">
-                <input class="training_name" type="text"
-                formControlName="name">
+                <input class="training_name" type="text" formControlName="name">
                 <label for="training_name">Name</label>
                 <span class="helper-text red-text" *ngIf="initForm.get('name').invalid && initForm.get('name').touched">
                     <span *ngIf="initForm.get('name').errors['required']">
@@ -15,34 +13,33 @@
                 </span>
             </div>
         </div>
-        <div class="col s12 m6 l6 xl6">
+        <div class="col s12 m6">
             <div class="input-field col s12">
-                <input class="training_name" type="text" class="datepicker" #start 
-                formControlName="date">
+                <input class="training_name" type="text" class="datepicker" #start formControlName="date">
                 <label for="training_name">Pick start date</label>
                 <span class="helper-text red-text" *ngIf="!isValid">
                     Choose the correct date!
                 </span>
             </div>
         </div>
-        <div class="col s12 m6 l6 xl6">
+        <div class="col s12 m6">
             <div class="input-field col s12">
-                <input class="training_name" type="number" 
-                formControlName="countWeek">
+                <input class="training_name" type="number" formControlName="countWeek">
                 <label for="training_name">Number of week</label>
-                <span class="helper-text red-text" *ngIf="initForm.get('countWeek').invalid && initForm.get('countWeek').touched">
+                <span class="helper-text red-text"
+                    *ngIf="initForm.get('countWeek').invalid && initForm.get('countWeek').touched">
                     <span *ngIf="initForm.get('countWeek').errors['required']">
                         This field must be filled!
                     </span>
                 </span>
             </div>
         </div>
-        <div class="col s12 m6 l6 xl6">
+        <div class="col s12 m6">
             <div class="input-field col s12">
-                <input class="training_name" type="number" 
-                formControlName="countDay">
-                <label for="training_name">Days of the week</label>
-                <span class="helper-text red-text" *ngIf="initForm.get('countDay').invalid && initForm.get('countDay').touched">
+                <input class="training_name" type="number" formControlName="countDay">
+                <label for="training_name">Number of workouts per week</label>
+                <span class="helper-text red-text"
+                    *ngIf="initForm.get('countDay').invalid && initForm.get('countDay').touched">
                     <span *ngIf="initForm.get('countDay').errors['required']">
                         This field must be filled!
                     </span>
@@ -51,22 +48,23 @@
         </div>
         <div class="col s12">
             <div class="input-field col s12">
-                <textarea id="textarea" class="materialize-textarea" maxlength="360" 
-                formControlName="description"></textarea>
+                <textarea id="textarea" class="materialize-textarea" maxlength="360"
+                    formControlName="description"></textarea>
                 <label for="textarea2">Description</label>
-                <span class="helper-text red-text" *ngIf="initForm.get('description').invalid && initForm.get('description').touched">
+                <span class="helper-text red-text"
+                    *ngIf="initForm.get('description').invalid && initForm.get('description').touched">
                     <span *ngIf="initForm.get('description').errors['required']">
                         The description field must be filled!
                     </span>
                 </span>
             </div>
         </div>
-        <div class="col s12 m12 l12 xl12 file-field input-field">
+        <div class="col s12 file-field input-field">
             <div class="btn">
                 <span>File</span>
-                <input type="file" accept=".jpeg, .gif, .bmp, .png, .jpg" formControlName="img" (change)="onFileSelect($event)" 
-                [disabled]="initForm.disabled" 
-                [ngClass]="{'invalid': initForm.get('img').invalid && initForm.get('img').touched}">
+                <input type="file" accept=".jpeg, .gif, .bmp, .png, .jpg" formControlName="img"
+                    (change)="onFileSelect($event)" [disabled]="initForm.disabled"
+                    [ngClass]="{'invalid': initForm.get('img').invalid && initForm.get('img').touched}">
             </div>
             <div class="file-path-wrapper">
                 <input class="file-path" type="text">
@@ -77,76 +75,69 @@
                 </span>
             </div>
         </div>
-        <div class="col s12 m12 l12 xl12">
-            <button type="submit" 
-                class="btn_login col s8 offset-s2 m6 offset-m3 l4 offset-l4 xl4 offset-xl4 z-depth-4"
+        <div class="col s12">
+            <button type="submit" class="btn_login col s8 offset-s2 m6 offset-m3 l4 offset-l4 z-depth-4"
                 [disabled]="initForm.invalid || initForm.disabled || !isValid">
                 Generate</button>
         </div>
     </form>
 
-    <form [formGroup]="weekForm" *ngIf="base$ | async as bases; else loader" 
-    (ngSubmit)="onSubmitWeek()"
-    [hidden]="weekForm.disabled">
-        <div class="training-week col s12 m12 l12 xl12 z-depth-5" formArrayName="weeks"
+    <form [formGroup]="weekForm" *ngIf="base$ | async as bases; else loader" (ngSubmit)="onSubmitWeek()"
+        [hidden]="weekForm.disabled">
+        <div class="training-week col s12 z-depth-5" formArrayName="weeks"
             *ngFor="let week of weekForm.get('weeks')['controls']; let i = index">
             <div [formGroupName]="i">
                 <h5 class="center-align">Week #{{i+1}}</h5>
-                <div class="day" formArrayName="days" 
-                *ngFor="let day of week.get('days')['controls']; let j = index">
+                <div class="day" formArrayName="days" *ngFor="let day of week.get('days')['controls']; let j = index">
                     <div [formGroupName]="j" class="col">
                         <div class="black-field">
                             <h6>Day #{{j+1}}</h6>
                         </div>
-                        <div 
-                        *ngFor="let exercis of day.get('exercises')['controls']; let t = index" 
-                        formArrayName="exercises">
+                        <div *ngFor="let exercis of day.get('exercises')['controls']; let t = index"
+                            formArrayName="exercises">
                             <div class="row" [formGroupName]="t">
-                                <div class="col s12 m12 l6 xl6">
-                                    <div class="col s12 m12 l12 xl12">
+                                <div class="col s12 m12 l6">
+                                    <div class="col s12">
                                         <label for="select_all_select">Exercise</label>
                                         <select class="select_all_select" formControlName="exercise">
                                             <option value="" disabled selected>Choose your exercise</option>
-                                            <option *ngFor="let base of bases; let v = index" value="{{base._id}}">{{base.name}}</option>
+                                            <option *ngFor="let base of bases; let v = index" value="{{base._id}}">
+                                                {{base.name}}</option>
                                         </select>
-                                        <span class="helper-text red-text" *ngIf="exercis.get('exercise').invalid && exercis.get('exercise').touched">
+                                        <span class="helper-text red-text"
+                                            *ngIf="exercis.get('exercise').invalid && exercis.get('exercise').touched">
                                             <span *ngIf="exercis.get('exercise').errors['required']">
                                                 Choose your exercise!
                                             </span>
                                         </span>
                                     </div>
                                 </div>
-                                <div class="col s12 m12 l6 xl6">
-                                    <div class="input-field col s2 m2 l2 xl2" formArrayName="reps"
+                                <div class="col s12 m12 l6">
+                                    <div class="input-field col s2" formArrayName="reps"
                                         *ngFor="let reps of exercis.get('reps')['controls']; let h = index">
                                         <input class="reps" type="text" formControlName="{{h}}">
                                         <label for="reps">Reps</label>
                                     </div>
                                 </div>
-                                <!-- ///////////////////////////////// -->
                             </div>
                         </div>
                         <div class="col s12">
-                            <button 
-                            type="button"
-                                class="btn_login col center-align s4 offset-s1 m4 offset-m2 l4 offset-l1 xl4 offset-xl1 z-depth-4"
+                            <button type="button"
+                                class="btn_login col center-align s4 offset-s1 m4 offset-m2 l4 offset-l1 z-depth-4"
                                 (click)="addExercise(i,j)"><i class="material-icons">add</i>
                             </button>
-                            <button 
-                            type="button"
-                                class="btn_login col center-align s4 offset-s1 m4 offset-m2 l4 offset-l1 xl4 offset-xl1 z-depth-4"
-                                [disabled]="checkValidButtonRemove(i,j) === false"
-                                (click)="removeExercise(i,j)"><i class="material-icons">remove</i>
+                            <button type="button"
+                                class="btn_login col center-align s4 offset-s1 m4 offset-m2 l4 offset-l1 z-depth-4"
+                                [disabled]="checkValidButtonRemove(i,j) === false" (click)="removeExercise(i,j)"><i
+                                    class="material-icons">remove</i>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- ////////////////////////// -->
         </div>
-        <div class="col s12 m12 l12 xl12">
-            <button type="submit" 
-                class="btn_login col s8 offset-s2 m6 offset-m3 l4 offset-l4 xl4 offset-xl4 z-depth-4"
+        <div class="col s12">
+            <button type="submit" class="btn_login col s8 offset-s2 m6 offset-m3 l4 offset-l4 z-depth-4"
                 [disabled]="weekForm.invalid || weekForm.disabled">
                 Create</button>
         </div>
@@ -154,5 +145,5 @@
     <ng-template #loader>
         <app-loader></app-loader>
     </ng-template>
-    
+
 </div>

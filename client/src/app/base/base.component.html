@@ -1,12 +1,12 @@
 <div class="row">
     <h5 class="col s12 m10 offset-m1 l6 
-    offset-l3 xl6 offset-xl3 center-align 
+    offset-l3 center-align 
     create-training z-depth-5">Video database</h5>
 
-    <form class="col s12 m12 l12 xl12 add-video-database z-depth-5" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="col s12 m6 l6 xl6">
-            <div class="col s12 m12 l12 xl12">
-                <div class="input-field col s12 m12 l12 xl12">
+    <form class="col s12 add-video-database z-depth-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="col s12 m6">
+            <div class="col s12">
+                <div class="input-field col s12">
                     <input id="training_name" type="text" class="validate" formControlName="name"
                         [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
                     <label for="training_name">Name</label>
@@ -16,7 +16,7 @@
                         </span>
                     </span>
                 </div>
-                <div class="col s12 m12 12 xl12 file-field input-field">
+                <div class="col s12 file-field input-field">
                     <div class="btn">
                         <span>File</span>
                         <input type="file" (change)="onFileSelect($event)" accept=".mp4"
@@ -25,7 +25,8 @@
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text" #inputRef>
-                        <span class="helper-text red-text" *ngIf="form.get('video').invalid && form.get('video').touched">
+                        <span class="helper-text red-text"
+                            *ngIf="form.get('video').invalid && form.get('video').touched">
                             <span *ngIf="form.get('video').errors['required']">
                                 The video field must be filled!
                             </span>
@@ -34,29 +35,29 @@
                 </div>
             </div>
         </div>
-        <div class="col s12 m6 l6 xl6">
+        <div class="col s12 m6">
             <div *ngIf="videoLoading == false; else loading">
-                <video *ngIf="videoPreview; else view" class="col s12 m12 l12 xl12 responsive-video" controls>
+                <video *ngIf="videoPreview; else view" class="col s12 responsive-video" controls>
                     <source [src]="videoPreview" type="video/mp4">
                 </video>
                 <ng-template #view>
-                    <video class="col s12 m12 l12 xl12 responsive-video" controls></video>
+                    <video class="col s12 responsive-video" controls></video>
                 </ng-template>
             </div>
             <ng-template #loading>
                 <app-loader></app-loader>
                 <h5 class="center-align clr-White">The file is being downloaded. Wait please!</h5>
             </ng-template>
-            
+
         </div>
-        <div class="col s12 m12 l12 xl12">
+        <div class="col s12">
             <button type="submit" [disabled]="form.invalid || form.disabled || !videoPreview || videoLoading == true"
-                class="btn_login col s8 offset-s2 m6 offset-m3 l4 offset-l4 xl4 offset-xl4 z-depth-4">Add
+                class="btn_login col s8 offset-s2 m6 offset-m3 l4 offset-l4 z-depth-4">Add
                 video</button>
         </div>
     </form>
 
-    <div *ngIf="base$ | async as bases; else loader" class="col s12 m12 l12 xl12 add-video-database z-depth-5">
+    <div *ngIf="base$ | async as bases; else loader" class="col s12 add-video-database z-depth-5">
         <table class="video-table" *ngIf="bases.length !== 0; else empty">
             <thead>
                 <tr>
@@ -70,7 +71,8 @@
                 <tr *ngFor="let base of bases">
                     <td>{{base.name}}</td>
                     <td>{{base.video}}</td>
-                    <td><button class="btn_login" (click)="deleteExercise(base._id)"><i class="material-icons">delete</i></button></td>
+                    <td><button class="btn_login" (click)="deleteExercise(base._id)"><i
+                                class="material-icons">delete</i></button></td>
                 </tr>
             </tbody>
         </table>

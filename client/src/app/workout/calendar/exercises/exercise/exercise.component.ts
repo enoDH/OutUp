@@ -77,11 +77,9 @@ export class ExerciseComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.eSub) {
       this.eSub.unsubscribe();
-      console.log(1)
     }
     else if (this.eeSub) {
       this.eeSub.unsubscribe();
-      console.log(2)
     }
   }
 
@@ -95,7 +93,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
     this.eeSub = this._workoutService.updateStatus(this.stateData['workoutId'],
       this.stateData['exerciseId'], true).subscribe(
         update => {
-          MaterialService.toast("The exercise is done!");
+          MaterialService.toast(update.message);
           this._router.navigate(["/exercises"], {
             state: {
               workoutId: this.stateData['workoutId'],

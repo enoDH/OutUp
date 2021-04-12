@@ -10,12 +10,12 @@ export class CreateWorkoutService {
 
   constructor(private _http: HttpClient) { }
 
-  create(name: string, description: string, date, countWeek, countDay, img: File, weeks): Observable<Workout>{
+  create(name: string, description: string, date, countWeek, countDay, img: File, weeks): Observable<Workout> {
     const fd = new FormData();
     let subText = JSON.stringify(weeks);
-    let text = subText.substring(9, subText.length-1);
+    let text = subText.substring(9, subText.length - 1);
 
-    if(img){
+    if (img) {
       fd.append('image', img, img.name);
     }
     fd.append('name', name);

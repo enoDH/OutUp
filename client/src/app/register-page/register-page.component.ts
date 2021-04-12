@@ -46,7 +46,5 @@ export class RegisterPageComponent implements OnInit, OnDestroy {
         this.form.enable();
       }
     );
-    
-
   }
 }

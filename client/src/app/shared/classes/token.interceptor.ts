@@ -14,10 +14,10 @@ import { Router } from '@angular/router';
 export class TokenInterceptor implements HttpInterceptor {
 
   constructor(private _auth: AuthService,
-              private _router: Router) {}
+    private _router: Router) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (this._auth.isAuthenticated()){
+    if (this._auth.isAuthenticated()) {
       request = request.clone({
         setHeaders: {
           Authorization: this._auth.getToken()
@@ -25,12 +25,12 @@ export class TokenInterceptor implements HttpInterceptor {
       });
     }
     return next.handle(request)
-                .pipe(catchError((error: HttpErrorResponse) => this.handlerAuthError(error)));
+      .pipe(catchError((error: HttpErrorResponse) => this.handlerAuthError(error)));
   }
 
 
-  private handlerAuthError(error: HttpErrorResponse): Observable<any>{
-    if (error.status === 401){
+  private handlerAuthError(error: HttpErrorResponse): Observable<any> {
+    if (error.status === 401) {
       this._router.navigate(['/login'], {
         queryParams: {
           sessionFailed: true

@@ -19,7 +19,7 @@ export class SupportComponent implements OnInit {
     });
   }
 
-  onSubmit(): void{
+  onSubmit(): void {
     this.form.disable();
     this._supportService.create(this.form.value.theme, this.form.value.description).subscribe(
       support => {

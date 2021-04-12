@@ -25,7 +25,8 @@
         </div>
         <ng-template #empty>
             <div class="col s12 center">
-                <h5>Your workout list is empty! Add new <a routerLink="/create">workout</a>?</h5>
+                <h5>Your workout list is empty! Add new <a routerLink="/create">workout</a> or enter your <a
+                        routerLink="/activation">key</a>?</h5>
             </div>
         </ng-template>
     </div>
@@ -37,13 +38,13 @@
 </div>
 
 
-<div class="fixed-action-btn" #floating_btn>
-    <a class="btn-floating btn-large red z-depth-5">
+<div class="fixed-action-btn z-depth-5" #floating_btn>
+    <a class="btn-floating btn-large red">
         <i class="large material-icons">add</i>
     </a>
     <ul>
         <li><a class="btn-floating red" routerLink="/create"><i class="material-icons">create</i></a></li>
-        <li><a class="btn-floating green" routerLink="/add"><i class="material-icons">vpn_key</i></a></li>
+        <li><a class="btn-floating green" routerLink="/activation"><i class="material-icons">vpn_key</i></a></li>
         <li><a class="btn-floating blue" routerLink="/base"><i class="material-icons">storage</i></a></li>
     </ul>
 </div>

@@ -158,12 +158,12 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy {
       this.weekForm.value).subscribe(
         workout => {
           MaterialService.toast('Added new workout!');
-          
+
           for (const days of this.weekForm.value.weeks) {
             for (const exercises of days.days) {
               for (const exercise of exercises.exercises) {
-                this._baseService.updateUse(exercise.exercise, 1).subscribe(
-                  base => {},
+                this._baseService.updateUse(exercise.exercise).subscribe(
+                  base => { },
                   error => {
                     MaterialService.toast(error.error.message);
                   }
@@ -171,7 +171,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy {
               }
             }
           }
-          
+
           this.initForm.reset();
           this.initForm.enable();
           this.weekForm.disable();

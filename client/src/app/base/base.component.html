@@ -45,8 +45,7 @@
                 </ng-template>
             </div>
             <ng-template #loading>
-                <app-loader></app-loader>
-                <h5 class="center-align clr-White">The file is being downloaded. Wait please!</h5>
+                <app-loader-v1></app-loader-v1>
             </ng-template>
 
         </div>
@@ -57,7 +56,7 @@
         </div>
     </form>
 
-    <div *ngIf="base$ | async as bases; else loader" class="col s12 add-video-database z-depth-5">
+    <div *ngIf="base$ | async as bases; else preloader_v1" class="col s12 add-video-database z-depth-5">
         <table class="video-table" *ngIf="bases.length !== 0; else empty">
             <thead>
                 <tr>
@@ -76,15 +75,13 @@
                 </tr>
             </tbody>
         </table>
-
         <ng-template #empty>
             <div class="center">
                 <h5>Your exercise list is empty!</h5>
             </div>
         </ng-template>
     </div>
-
-    <ng-template #loader>
-        <app-loader></app-loader>
+    <ng-template #preloader_v1>
+        <app-preloader-v1></app-preloader-v1>
     </ng-template>
 </div>

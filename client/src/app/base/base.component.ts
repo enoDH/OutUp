@@ -45,6 +45,19 @@ export class BaseComponent implements OnInit, OnDestroy {
 
     const reader = new FileReader();
 
+    reader.onprogress = (event) => {
+      let percent = document.querySelector('.percent');
+      let progress = document.querySelector('.progress') as HTMLElement;
+
+      let per = event.total / 100;
+      progress.style.width = ((event.loaded / per) | 0) + '%';
+      percent.textContent = ((event.loaded / per) | 0) + '%';
+
+      if (((event.loaded / per) | 0) == 100) {
+        percent.classList.add("add");
+      }
+    };
+
     reader.onload = () => {
       this.videoPreview = reader.result;
       this.videoLoading = false;

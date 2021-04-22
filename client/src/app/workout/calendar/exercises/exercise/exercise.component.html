@@ -1,4 +1,4 @@
-<div class="exercise-window z-depth-5" *ngIf="data.length != 0; else loader">
+<div class="exercise-window z-depth-5" *ngIf="data.length != 0; else preloader_v1">
 
     <div class="row" *ngFor="let _data of data">
         <div class="col s12 center-align">
@@ -34,6 +34,6 @@
         </div>
     </div>
 </div>
-<ng-template #loader>
-    <app-loader></app-loader>
+<ng-template #preloader_v1>
+    <app-preloader-v1></app-preloader-v1>
 </ng-template>

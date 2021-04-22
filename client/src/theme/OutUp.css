@@ -244,3 +244,122 @@ select{
 .input-act-k{
     text-align: center;
 }
+
+ /* preloader_v1 start */
+ .preloader_v1{
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box1{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    position: absolute;
+    border: 15px solid #fee440;
+}
+
+.box2{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    position: absolute;
+    border: 15px solid #00bbf9;
+}
+
+.box1{
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    animation: anim 1s linear infinite;
+}
+
+.box2{
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    animation: anim2 1.2s linear infinite;
+}
+
+@keyframes anim {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes anim2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+.dot{
+    width: 50px;
+    height: 50px;
+    background: #FFFC31;
+    border-radius: 50px;
+    animation: anim3 3s linear infinite;
+}
+
+@keyframes anim3 {
+    0% {
+        transform: scale(0.1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 1;
+    }
+}
+ /* preloader_v1 end */
+
+ /* loading_v1 start */
+ .loading_v1 {
+    width: 100%;
+}
+
+.percent {
+    color: #999;
+    font-size: 7em;
+    font-weight: 400;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 21px;
+    background: #111;
+    border-radius: 13px;
+    box-sizing: border-box;
+}
+
+.progress {
+    width: 100%;
+    height: 19px;
+    background: #f60d54;
+    border-radius: 13px;
+}
+
+.add{
+    animation: anim4.7s ease-in-out .1s;
+}
+
+@keyframes anim4 {
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.2;
+    }
+    100%{
+      opacity: 1;
+    }
+}
+
+ /* loading_v1 end */

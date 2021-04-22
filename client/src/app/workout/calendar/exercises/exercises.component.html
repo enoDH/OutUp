@@ -4,7 +4,7 @@
       Exercises
     </h5>
 
-    <div class="training-week col s12 m12 l12 xl12 z-depth-5" *ngIf="exercises.length != 0; else loader">
+    <div class="training-week col s12 m12 l12 xl12 z-depth-5" *ngIf="exercises.length != 0; else preloader_v1">
       <div class="col s12 m5 l5 xl5 workout-day" *ngFor="let exercise of exercises">
         <a *ngIf="exercise.status; else success"
           (click)="open(exercise.exerciseId, exercise.workoutId)">{{exercise.name}}</a>
@@ -13,8 +13,8 @@
         </ng-template>
       </div>
     </div>
-    <ng-template #loader>
-      <app-loader></app-loader>
+    <ng-template #preloader_v1>
+      <app-preloader-v1></app-preloader-v1>
     </ng-template>
   </div>
 </div>

@@ -1,3 +1,7 @@
+## Loader updates - OutUp v0.0.5
+### Features
+* Added new preloader and loader
+
 ## Refactoring - OutUp v0.0.4
 ### Features
 * Added the ability to share workouts via the key

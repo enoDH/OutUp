@@ -82,7 +82,7 @@
         </div>
     </form>
 
-    <form [formGroup]="weekForm" *ngIf="base$ | async as bases; else loader" (ngSubmit)="onSubmitWeek()"
+    <form [formGroup]="weekForm" *ngIf="base$ | async as bases; else preloader_v1" (ngSubmit)="onSubmitWeek()"
         [hidden]="weekForm.disabled">
         <div class="training-week col s12 z-depth-5" formArrayName="weeks"
             *ngFor="let week of weekForm.get('weeks')['controls']; let i = index">
@@ -142,8 +142,8 @@
                 Create</button>
         </div>
     </form>
-    <ng-template #loader>
-        <app-loader></app-loader>
+    <ng-template #preloader_v1>
+        <app-preloader-v1></app-preloader-v1>
     </ng-template>
 
 </div>

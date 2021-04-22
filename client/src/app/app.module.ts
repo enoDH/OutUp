@@ -13,12 +13,13 @@ import { TokenInterceptor } from './shared/classes/token.interceptor';
 import { WorkoutComponent } from './workout/workout.component';
 import { BaseComponent } from './base/base.component';
 import { SupportComponent } from './support/support.component';
-import { LoaderComponent } from './shared/components/loader/loader.component';
 import { CalendarComponent } from './workout/calendar/calendar.component';
 import { CreateComponent } from './create/create.component';
 import { ExercisesComponent } from './workout/calendar/exercises/exercises.component';
 import { ExerciseComponent } from './workout/calendar/exercises/exercise/exercise.component';
 import { ActivationKeyComponent } from './activation-key/activation-key.component';
+import { PreloaderV1Component } from './shared/components/preloader-v1/preloader-v1.component';
+import { LoaderV1Component } from './shared/components/loader-v1/loader-v1.component';
 
 @NgModule({
   declarations: [
@@ -30,12 +31,13 @@ import { ActivationKeyComponent } from './activation-key/activation-key.componen
     WorkoutComponent,
     BaseComponent,
     SupportComponent,
-    LoaderComponent,
     CalendarComponent,
     CreateComponent,
     ExercisesComponent,
     ExerciseComponent,
-    ActivationKeyComponent
+    ActivationKeyComponent,
+    PreloaderV1Component,
+    LoaderV1Component
   ],
   imports: [
     BrowserModule,

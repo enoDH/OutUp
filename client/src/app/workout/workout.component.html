@@ -5,7 +5,7 @@
     </h5>
 
 
-    <div *ngIf="workouts$ | async as workout; else loader">
+    <div *ngIf="workouts$ | async as workout; else preloader_v1">
         <div *ngIf="workout.length !== 0; else empty">
             <div class="col s12 m6" *ngFor="let item of workout">
                 <div class="card">
@@ -30,11 +30,9 @@
             </div>
         </ng-template>
     </div>
-    <ng-template #loader>
-        <app-loader></app-loader>
+    <ng-template #preloader_v1>
+        <app-preloader-v1></app-preloader-v1>
     </ng-template>
-
-
 </div>
 
 

@@ -11,5 +11,6 @@ router.get('/', passport.authenticate('jwt', { session: false }), controller.get
 router.get('/:id', passport.authenticate('jwt', { session: false }), controller.getExercise);
 router.delete('/:id', passport.authenticate('jwt', { session: false }), controller.deleteExercise);
 router.patch('/', passport.authenticate('jwt', { session: false }), controller.updateUse);
+router.patch('/:id', passport.authenticate('jwt', { session: false }), upload.single('video'), controller.update);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { MaterialService } from '../shared/classes/material.service';
 import { Base } from '../shared/interfaces';
@@ -20,7 +21,9 @@ export class BaseComponent implements OnInit, OnDestroy {
 
   @ViewChild('inputRef') inputRef: ElementRef;
 
-  constructor(private _baseService: BaseService, private _renderer: Renderer2) { }
+  constructor(private _baseService: BaseService,
+    private _renderer: Renderer2,
+    private _router: Router) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -97,5 +100,9 @@ export class BaseComponent implements OnInit, OnDestroy {
       error => MaterialService.toast(error.error.message),
       () => this.base$ = this._baseService.getAll()
     );
+  }
+
+  editExercise(id: string): void {
+    this._router.navigate([`/base/${id}`]);
   }
 }

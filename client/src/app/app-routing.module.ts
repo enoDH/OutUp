@@ -13,6 +13,7 @@ import { WorkoutComponent } from './workout/workout.component';
 import { ExercisesComponent } from './workout/calendar/exercises/exercises.component';
 import { ExerciseComponent } from './workout/calendar/exercises/exercise/exercise.component';
 import { ActivationKeyComponent } from './activation-key/activation-key.component';
+import { BaseEditComponent } from './base/base-edit/base-edit.component';
 
 const routes: Routes = [
     {
@@ -50,6 +51,9 @@ const routes: Routes = [
             },
             {
                 path: 'base', component: BaseComponent
+            },
+            {
+                path: 'base/:id', component: BaseEditComponent
             },
             {
                 path: 'support', component: SupportComponent

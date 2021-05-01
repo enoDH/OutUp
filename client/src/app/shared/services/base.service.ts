@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Base, Message } from '../interfaces';
@@ -35,5 +35,21 @@ export class BaseService {
 
   updateUse(id: string): Observable<Message> {
     return this._http.patch<Message>(`/api/base/`, { id });
+  }
+
+  updateExercise(id: string, name: string, video: string, file: File): Observable<Message> {
+    const fd = new FormData();
+
+    if (file) {
+      fd.append('video', file, file.name);
+      fd.append('name', name);
+
+      return this._http.patch<Message>(`/api/base/${id}`, fd);
+    }
+
+    fd.append('name', name);
+    fd.append('video', video);
+
+    return this._http.patch<Message>(`/api/base/${id}`, fd);
   }
 }

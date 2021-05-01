@@ -50,7 +50,7 @@
 
         </div>
         <div class="col s12">
-            <button type="submit" [disabled]="form.invalid || form.disabled || !videoPreview || videoLoading == true"
+            <button type="submit" [disabled]="form.invalid || form.disabled || !videoPreview || videoLoading"
                 class="btn_login col s8 offset-s2 m6 offset-m3 l4 offset-l4 z-depth-4">Add
                 video</button>
         </div>
@@ -70,8 +70,11 @@
                 <tr *ngFor="let base of bases">
                     <td>{{base.name}}</td>
                     <td>{{base.video}}</td>
-                    <td><button class="btn_login" (click)="deleteExercise(base._id)"><i
-                                class="material-icons">delete</i></button></td>
+                    <td><button class="btn_edit td_btn" (click)="editExercise(base._id)"><i
+                                class="material-icons">settings</i></button>
+                        <button class="btn_login" (click)="deleteExercise(base._id)"><i
+                                class="material-icons">delete</i></button>
+                    </td>
                 </tr>
             </tbody>
         </table>

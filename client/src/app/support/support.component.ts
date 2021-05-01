@@ -8,7 +8,10 @@ import { SupportService } from '../shared/services/support.service';
   templateUrl: './support.component.html'
 })
 export class SupportComponent implements OnInit {
-
+  patreonUrl: string = 'https://www.patreon.com/outup';
+  patreonImgPath: string = '/uploads/patreon.png';
+  payPalUrl: string = 'https://www.patreon.com/outup';
+  payPalImgPath: string = '/uploads/paypal.png';
   form: FormGroup;
   constructor(private _supportService: SupportService) { }
 

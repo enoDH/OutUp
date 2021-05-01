@@ -20,6 +20,7 @@ import { ExerciseComponent } from './workout/calendar/exercises/exercise/exercis
 import { ActivationKeyComponent } from './activation-key/activation-key.component';
 import { PreloaderV1Component } from './shared/components/preloader-v1/preloader-v1.component';
 import { LoaderV1Component } from './shared/components/loader-v1/loader-v1.component';
+import { BaseEditComponent } from './base/base-edit/base-edit.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoaderV1Component } from './shared/components/loader-v1/loader-v1.compo
     ExerciseComponent,
     ActivationKeyComponent,
     PreloaderV1Component,
-    LoaderV1Component
+    LoaderV1Component,
+    BaseEditComponent
   ],
   imports: [
     BrowserModule,

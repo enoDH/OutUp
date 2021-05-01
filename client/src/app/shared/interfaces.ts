@@ -6,7 +6,7 @@ export interface User {
 
 export interface Base {
     user?: string,
-    nema: string,
+    name: string,
     video: string,
     use?: number,
     _id?: string

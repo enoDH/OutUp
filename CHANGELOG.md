@@ -1,3 +1,9 @@
+## Editing exercises - OutUp v0.0.6
+### Features
+* Added the ability to edit exercises
+
+Added a link to patreon in the support page
+
 ## Loader updates - OutUp v0.0.5
 ### Features
 * Added new preloader and loader

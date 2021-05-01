@@ -127,11 +127,38 @@ a{
     border-radius: 50px;
 }
 
+.td_btn{
+    margin-right: 15px;
+}
+
 .btn_login{
     background-color: #FC4E4E;
     border-radius: 30px;
     border-style: none;
     color: #FFFFFF;
+}
+
+.btn_edit{
+    background-color: #32a287;
+    border-radius: 30px;
+    border-style: none;
+    color: #FFFFFF;
+}
+
+.btn_login:not(:disabled):hover{
+    background-color: #d91e36;
+    border-radius: 30px;
+    border-style: none;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.btn_edit:hover{
+    background-color: #3E885B;
+    border-radius: 30px;
+    border-style: none;
+    color: #FFFFFF;
+    cursor: pointer;
 }
 
 .create-training{

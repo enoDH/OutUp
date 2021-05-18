@@ -75,9 +75,10 @@
                 </span>
             </div>
         </div>
+        <app-loader-v2 *ngIf="loading"></app-loader-v2>
         <div class="col s12">
             <button type="submit" class="btn_login col s8 offset-s2 m6 offset-m3 l4 offset-l4 z-depth-4"
-                [disabled]="initForm.invalid || initForm.disabled || !isValid">
+                [disabled]="initForm.invalid || initForm.disabled || !isValid || loading">
                 Generate</button>
         </div>
     </form>

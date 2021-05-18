@@ -26,7 +26,7 @@ export class ExerciseComponent implements OnInit, OnDestroy {
       exerciseId: string,
     };
 
-    if (state == undefined) {
+    if (state === undefined) {
       this._router.navigate(['/workout']);
     }
     this.stateData = state;

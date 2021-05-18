@@ -21,6 +21,10 @@ import { ActivationKeyComponent } from './activation-key/activation-key.componen
 import { PreloaderV1Component } from './shared/components/preloader-v1/preloader-v1.component';
 import { LoaderV1Component } from './shared/components/loader-v1/loader-v1.component';
 import { BaseEditComponent } from './base/base-edit/base-edit.component';
+import { EditWorkoutComponent } from './workout/calendar/edit-workout/edit-workout.component';
+import { EditWorkoutDescriptionComponent } from './workout/calendar/edit-workout/edit-workout-description/edit-workout-description.component';
+import { EditWorkoutPlanComponent } from './workout/calendar/edit-workout/edit-workout-plan/edit-workout-plan.component';
+import { LoaderV2Component } from './shared/components/loader-v2/loader-v2.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { BaseEditComponent } from './base/base-edit/base-edit.component';
     ActivationKeyComponent,
     PreloaderV1Component,
     LoaderV1Component,
-    BaseEditComponent
+    BaseEditComponent,
+    EditWorkoutComponent,
+    EditWorkoutDescriptionComponent,
+    EditWorkoutPlanComponent,
+    LoaderV2Component
   ],
   imports: [
     BrowserModule,

@@ -37,7 +37,7 @@ export class BaseService {
     return this._http.patch<Message>(`/api/base/`, { id });
   }
 
-  updateExercise(id: string, name: string, video: string, file: File): Observable<Message> {
+  updateExercise(id: string, name: string, video: string, file?: File): Observable<Message> {
     const fd = new FormData();
 
     if (file) {

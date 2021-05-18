@@ -123,3 +123,66 @@ module.exports.updateUsers = async function (req, res) {
         errorHandler(res, e);
     }
 };
+
+module.exports.updatePlan = async function (req, res) {
+    try {
+        await Training.findByIdAndUpdate(
+            { _id: req.body.id },
+            { $set: { weeks: JSON.parse(req.body.weeks) } },
+            { new: true }
+        );
+
+        res.status(200).json({ message: 'Update successful!' });
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};
+
+module.exports.updateDescription = async function (req, res) {
+    try {
+        const compare = await Training.findById(req.body._id);
+
+        if (req.file) {
+            fs.unlink(path.resolve(serverPath.path, compare.image), async (err) => {
+                if (err) {
+                    return res.status(500).json({ message: 'Failed to update description!' });
+                }
+                else {
+                    await Training.findByIdAndUpdate(
+                        { _id: req.body._id },
+                        {
+                            $set:
+                            {
+                                name: req.body.name,
+                                description: req.body.description,
+                                date: req.body.date,
+                                image: req.file.path
+                            }
+                        },
+                        { new: true }
+                    );
+
+                    res.status(200).json({ message: 'Update successful!' });
+                }
+            });
+        }
+        else {
+            await Training.findByIdAndUpdate(
+                { _id: req.body._id },
+                {
+                    $set:
+                    {
+                        name: req.body.name,
+                        description: req.body.description,
+                        date: req.body.date
+                    }
+                },
+                { new: true }
+            );
+
+            res.status(200).json({ message: 'Update successful!' });
+        }
+    } catch (e) {
+        errorHandler(res, e);
+    }
+};

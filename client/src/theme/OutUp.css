@@ -145,6 +145,27 @@ a{
     color: #FFFFFF;
 }
 
+.btn_editworkout{
+    text-align: center;
+    background-color: #DF2935;
+    color: #FFFFFF;
+    border-style: none;
+}
+
+.btn_editworkout:hover{
+    background-color: #d91e36;
+    color: #FFFFFF;
+    border-style: none;
+    cursor: pointer;
+}
+
+.btn_editworkout.active{
+    background-color: #393E41;
+    color: #FFFFFF;
+    border-style: none;
+    cursor: unset;
+}
+
 .btn_login:not(:disabled):hover{
     background-color: #d91e36;
     border-radius: 30px;

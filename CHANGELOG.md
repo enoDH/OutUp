@@ -1,3 +1,7 @@
+## Editing workout - OutUp v0.0.7
+### Features
+* Added the ability to edit workouts
+
 ## Editing exercises - OutUp v0.0.6
 ### Features
 * Added the ability to edit exercises

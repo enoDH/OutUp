@@ -20,7 +20,7 @@ export class ExercisesComponent implements OnInit, OnDestroy {
     private _router: Router) {
     const state = this._router.getCurrentNavigation().extras.state as { workoutId: string, dayId: string };
 
-    if (state == undefined) {
+    if (state === undefined) {
       this._router.navigate(['/workout']);
     }
     this.stateData = state;

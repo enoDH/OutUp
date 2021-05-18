@@ -26,7 +26,7 @@ export class SupportComponent implements OnInit {
     this.form.disable();
     this._supportService.create(this.form.value.theme, this.form.value.description).subscribe(
       support => {
-        MaterialService.toast("Your request has been sent!");
+        MaterialService.toast('Your request has been sent!');
         this.form.enable();
         this.form.reset();
       },

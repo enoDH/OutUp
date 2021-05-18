@@ -14,6 +14,9 @@ import { ExercisesComponent } from './workout/calendar/exercises/exercises.compo
 import { ExerciseComponent } from './workout/calendar/exercises/exercise/exercise.component';
 import { ActivationKeyComponent } from './activation-key/activation-key.component';
 import { BaseEditComponent } from './base/base-edit/base-edit.component';
+import { EditWorkoutComponent } from './workout/calendar/edit-workout/edit-workout.component';
+import { EditWorkoutDescriptionComponent } from './workout/calendar/edit-workout/edit-workout-description/edit-workout-description.component';
+import { EditWorkoutPlanComponent } from './workout/calendar/edit-workout/edit-workout-plan/edit-workout-plan.component';
 
 const routes: Routes = [
     {
@@ -39,6 +42,16 @@ const routes: Routes = [
             },
             {
                 path: 'workout/:id', component: CalendarComponent
+            },
+            {
+                path: 'editworkout', component: EditWorkoutComponent, children: [
+                    {
+                        path: 'description', component: EditWorkoutDescriptionComponent
+                    },
+                    {
+                        path: 'plan', component: EditWorkoutPlanComponent
+                    }
+                ]
             },
             {
                 path: 'exercises', component: ExercisesComponent

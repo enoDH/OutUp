@@ -49,15 +49,15 @@ export class BaseComponent implements OnInit, OnDestroy {
     const reader = new FileReader();
 
     reader.onprogress = (event) => {
-      let percent = document.querySelector('.percent');
-      let progress = document.querySelector('.progress') as HTMLElement;
+      const percent = document.querySelector('.percent');
+      const progress = document.querySelector('.progress') as HTMLElement;
 
-      let per = event.total / 100;
+      const per = event.total / 100;
       progress.style.width = ((event.loaded / per) | 0) + '%';
       percent.textContent = ((event.loaded / per) | 0) + '%';
 
-      if (((event.loaded / per) | 0) == 100) {
-        percent.classList.add("add");
+      if (((event.loaded / per) | 0) === 100) {
+        percent.classList.add('add');
       }
     };
 
@@ -68,7 +68,7 @@ export class BaseComponent implements OnInit, OnDestroy {
 
     reader.onerror = () => {
       MaterialService.toast(event.error);
-    }
+    };
 
     reader.readAsDataURL(file);
   }

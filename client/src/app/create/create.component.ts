@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { MaterialDatepicker, MaterialService } from '../shared/classes/material.service';
+import { WorkoutformGenerate } from '../shared/classes/workoutform-generate';
 import { Base } from '../shared/interfaces';
 import { BaseService } from '../shared/services/base.service';
-import { CreateWorkoutService } from '../shared/services/create-workout.service';
+import { WorkoutService } from '../shared/services/workout.service';
 
 @Component({
   selector: 'app-create',
@@ -18,13 +19,14 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy {
   img: File;
   weekForm: FormGroup;
   initForm: FormGroup;
-  base$: Observable<Base[]>
+  base$: Observable<Base[]>;
   cSub: Subscription;
+  loading: boolean = false;
 
   constructor(private _baseService: BaseService,
-    private _formBuilder: FormBuilder,
-    private _createWorkoutService: CreateWorkoutService,
-    private _router: Router) { }
+    private _workoutService: WorkoutService,
+    private _router: Router,
+    private _wfg: WorkoutformGenerate) { }
 
   ngOnInit(): void {
     this.base$ = this._baseService.getAll();
@@ -37,9 +39,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy {
       img: new FormControl('', [Validators.required])
     });
 
-    this.weekForm = this._formBuilder.group({
-      weeks: this._formBuilder.array([this.week()])
-    });
+    this.weekForm = this._wfg.init();
 
     this.weekForm.disable();
   }
@@ -59,7 +59,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy {
   validate(): void {
     if (!this.start.date) {
       this.isValid = true;
-      return
+      return;
     }
 
     this.isValid = this.start.date > (new Date());
@@ -69,77 +69,54 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onFileSelect(event: any): void {
+    this.initForm.disabled;
     const file = event.target.files[0];
     this.img = file;
-  }
+    this.loading = true;
 
-  week(): FormGroup {
-    return this._formBuilder.group({
-      days: this._formBuilder.array([this.day()])
-    })
-  }
+    const reader = new FileReader();
 
-  day(): FormGroup {
-    return this._formBuilder.group({
-      exercises: this._formBuilder.array([this.exercise()])
-    })
-  }
+    reader.onprogress = (event) => {
+      const progress = document.querySelector('.determinate') as HTMLElement;
 
-  exercise(): FormGroup {
-    return this._formBuilder.group({
-      exercise: this._formBuilder.control('', [Validators.required]),
-      reps: this._formBuilder.array([
-        ['', [Validators.min(0), Validators.required]],
-        ['', [Validators.min(0), Validators.required]],
-        ['', [Validators.min(0), Validators.required]],
-        ['', [Validators.min(0), Validators.required]],
-        ['', [Validators.min(0), Validators.required]],
-        ['', [Validators.min(0), Validators.required]]])
-    })
-  }
+      const per = event.total / 100;
+      const current = ((event.loaded / per) | 0);
 
-  addWeek(): void {
-    (this.weekForm.controls.weeks as FormArray).push(this.week());
-  }
+      progress.style.width = `${current}%`;
+    };
 
-  addDay(week: number): void {
-    (this.weekForm.get(`weeks.${week}.days`) as FormArray).push(this.day());
+    reader.onload = () => {
+      this.loading = false;
+      this.initForm.enabled;
+    };
+
+    reader.onerror = () => {
+      MaterialService.toast(event.error);
+    };
+
+    this.loading = false;
+    reader.readAsDataURL(file);
   }
 
   addExercise(week: number, day: number): void {
-    (this.weekForm.get(`weeks.${week}.days.${day}.exercises`) as FormArray).push(this.exercise());
+    this._wfg.addExercise(this.weekForm, week, day);
   }
 
   removeExercise(week: number, day: number): void {
-    (this.weekForm.get(`weeks.${week}.days.${day}.exercises`) as FormArray).removeAt((this.weekForm.get(`weeks.${week}.days.${day}.exercises`) as FormArray).length - 1);
+    this._wfg.removeExercise(this.weekForm, week, day);
   }
 
   checkValidButtonRemove(week: number, day: number): boolean {
-    let status: boolean = false;
-
-    if ((this.weekForm.get(`weeks.${week}.days.${day}.exercises`) as FormArray).length == 1) {
-      status = false;
-    } else {
-      status = true;
-    }
-
-    return status;
+    return this._wfg.checkValidButtonRemove(this.weekForm, week, day);
   }
 
   formCreate(week: number, day: number): void {
-    for (let i = 0; i < week; i++) {
-      if (i > 0) {
-        this.addWeek();
-      }
-      for (let j = 0; j < day - 1; j++) {
-        this.addDay(i);
-      }
-    }
+    this._wfg.formCreate(this.weekForm, week, day);
   }
 
   onSubmitInit(): void {
-    let week: number = this.initForm.value.countWeek;
-    let day: number = this.initForm.value.countDay;
+    const week: number = this.initForm.value.countWeek;
+    const day: number = this.initForm.value.countDay;
 
     this.initForm.disable();
 
@@ -148,7 +125,7 @@ export class CreateComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   onSubmitWeek(): void {
-    this.cSub = this._createWorkoutService.create(
+    this.cSub = this._workoutService.create(
       this.initForm.value.name,
       this.initForm.value.description,
       this.start.date,

@@ -11,7 +11,7 @@ import { WorkoutService } from '../shared/services/workout.service';
 export class WorkoutComponent implements OnInit, AfterViewInit {
   @ViewChild('floating_btn') floatingRef: ElementRef;
   workouts$: Observable<Workout[]>;
-  
+
   constructor(private _workoutService: WorkoutService) { }
 
   ngOnInit(): void {

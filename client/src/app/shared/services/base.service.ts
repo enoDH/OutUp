@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Base, Message } from '../interfaces';
@@ -31,10 +31,6 @@ export class BaseService {
 
   delete(id: string): Observable<Message> {
     return this._http.delete<Message>(`/api/base/${id}`);
-  }
-
-  updateUse(id: string): Observable<Message> {
-    return this._http.patch<Message>(`/api/base/`, { id });
   }
 
   updateExercise(id: string, name: string, video: string, file?: File): Observable<Message> {

@@ -61,20 +61,6 @@ module.exports.deleteExercise = async function (req, res) {
     }
 }
 
-module.exports.updateUse = async function (req, res) {
-    try {
-        const base = await Base.findByIdAndUpdate(
-            { _id: req.body.id },
-            { $inc: { use: 1 } },
-            { new: true }
-        );
-
-        res.status(200).json({ message: 'Updated!' });
-    } catch (e) {
-        errorHandler(res, e);
-    }
-}
-
 module.exports.update = async function (req, res) {
     try {
         const compare = await Base.findById(req.params.id);
@@ -85,7 +71,7 @@ module.exports.update = async function (req, res) {
                     return res.status(500).json({ message: 'Failed to update exercise!' });
                 }
                 else {
-                    const base = await Base.findByIdAndUpdate(
+                    await Base.findByIdAndUpdate(
                         { _id: req.params.id },
                         { $set: { name: req.body.name, video: req.file.path } },
                         { new: true }
@@ -96,7 +82,7 @@ module.exports.update = async function (req, res) {
             });
         }
         else {
-            const base = await Base.findByIdAndUpdate(
+            await Base.findByIdAndUpdate(
                 { _id: req.params.id },
                 { $set: { name: req.body.name } },
                 { new: true }

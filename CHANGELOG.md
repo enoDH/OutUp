@@ -1,3 +1,11 @@
+## Fixed some bugs - OutUp v0.0.8
+### Bug Fixes
+* Fixed calculation of 'use' field usage
+* Fixed the ability to delete training for non-owners
+
+Fixed the text on the workout page
+Fixed the text on the create-workout page
+
 ## Editing workout - OutUp v0.0.7
 ### Features
 * Added the ability to edit workouts

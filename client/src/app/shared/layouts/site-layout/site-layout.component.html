@@ -1,7 +1,7 @@
 <nav>
     <div class="nav-wrapper">
         <div class="container">
-            <a class="brand-logo">OutUp</a>
+            <a class="brand-logo" routerLink="/workout">OutUp</a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li *ngFor="let link of links"><a [routerLink]='[link.url]'>{{link.name}}</a></li>
@@ -9,7 +9,7 @@
             </ul>
 
             <ul class="sidenav" id="mobile-demo" #side_menu>
-                <li *ngFor="let link of links"><a [routerLink]='[link.url]'>{{link.name}}</a></li>
+                <li *ngFor="let link of links"><a [routerLink]='[link.url]' (click)="closeNav()">{{link.name}}</a></li>
                 <li><a href="#" (click)="logout($event)">Exit</a></li>
             </ul>
         </div>

@@ -53,10 +53,13 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
     );
   }
 
-  copyKey(): void {
+  async copyKey(): Promise<void> {
     if (this.workout) {
-      navigator.clipboard.writeText(this.workout['key']);
-      MaterialService.toast(`The key has been copied!`);
+      await navigator.clipboard.writeText(this.workout['key']).then(
+        () => {
+          MaterialService.toast(`The key has been copied!`);
+        },
+        error => MaterialService.toast(`Unable to write to clipboard: ${error.error.message}`));
     }
   }
 }

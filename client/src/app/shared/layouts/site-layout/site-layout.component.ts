@@ -38,4 +38,8 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this._router.navigate(['/login']);
   }
 
+  closeNav(): void {
+    this.modal.close();
+  }
+
 }

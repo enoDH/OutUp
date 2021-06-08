@@ -1,3 +1,7 @@
+## Dependencies updated - OutUp v0.0.8b
+
+Dependencies updated. Angular 12 available!
+
 ## Dependencies updated - OutUp v0.0.8a
 
 Dependencies updated

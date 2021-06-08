@@ -1,3 +1,7 @@
+## Dependencies updated - OutUp v0.0.8a
+
+Dependencies updated
+
 ## Fixed some bugs - OutUp v0.0.8
 ### Bug Fixes
 * Fixed calculation of 'use' field usage

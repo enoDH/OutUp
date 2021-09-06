@@ -1,0 +1,48 @@
+<div class="row" *ngIf="videoPath; else preloader_v1">
+    <h5 class="col s12 m10 offset-m1 l6 
+    offset-l3 center-align 
+    create-training z-depth-5">Edit exercise</h5>
+
+    <form class="col s12 add-video-database z-depth-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="col s12 m6">
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <input formControlName="name" id="training_name" type="text" class="validate">
+                    <label for="training_name" class="active">Name</label>
+                    <span class="helper-text red-text" *ngIf="form.get('name').invalid && form.get('name').touched">
+                        <span *ngIf="form.get('name').errors['required']">
+                            The name field must be filled!
+                        </span>
+                    </span>
+                </div>
+                <div class="col s12 file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        <input type="file" (change)="onFileSelect($event)" accept=".mp4" formControlName="video">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" value="{{videoPath}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div *ngIf="videoLoading == false; else loading">
+                <video class="col s12 responsive-video" controls>
+                    <source [src]="videoPreview" type="video/mp4">
+                </video>
+            </div>
+            <ng-template #loading>
+                <app-loader-v1></app-loader-v1>
+            </ng-template>
+
+        </div>
+        <div class="col s12">
+            <button type="submit" [disabled]="form.invalid || form.disabled || !videoPreview || videoLoading"
+                class="btn_login col s8 offset-s2 m6 offset-m3 l4 offset-l4 z-depth-4">Edit</button>
+        </div>
+    </form>
+</div>
+<ng-template #preloader_v1>
+    <app-preloader-v1></app-preloader-v1>
+</ng-template>

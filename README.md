@@ -16,16 +16,21 @@ npm install -g @angular/cli
  ```
  Set the package dependencies in the client folder
  ``` 
- cd client
- ```
- ``` 
- npm install 
+ npm client-install
  ```
 After installing all the dependencies, you can start the project (__in the root folder__)
  ``` 
  npm run dev
  ```
 __You can view all available startup commands in the package.json file__
+
+To generate a certificate, write the command below
+```
+openssl genrsa -out key.pem
+openssl req -new -key key.pem -subj "/CN=localhost" -out csr.pem
+openssl x509 -req -days 9999 -in csr.pem -signkey key.pem -out cert.pem
+rm csr.pem
+```
 
 ## Changelog
 Here you can see what has changed [here](https://github.com/enoDH/OutUp/blob/main/CHANGELOG.md)

@@ -20,7 +20,7 @@ module.exports.create = async function (req, res) {
             countDay: req.body.countDay,
             weeks: JSON.parse(req.body.weeks),
             image: req.file ? req.file.path : '',
-            key: generate()
+            key: generate(16)
         }).save();
 
         let arrayExercises = [];
@@ -33,7 +33,7 @@ module.exports.create = async function (req, res) {
         }
 
         const result = compressArray(arrayExercises);
-        for( let exercise of result){
+        for (let exercise of result) {
             await Base.findByIdAndUpdate(
                 { _id: exercise.value },
                 { $inc: { use: exercise.count } },
@@ -49,7 +49,7 @@ module.exports.create = async function (req, res) {
 
 module.exports.getAll = async function (req, res) {
     try {
-        const training = await Training.find({ users: req.user.id });
+        const training = await Training.find({ owner: req.user.id });
 
         res.status(200).json(training);
     } catch (e) {
@@ -78,7 +78,7 @@ module.exports.delete = async function (req, res) {
                 }
                 else {
                     await Training.findByIdAndDelete({ _id: req.params.id });
-                    
+
                     let arrayExercises = [];
                     for (let days of workout.weeks) {
                         for (let exercises of days['days']) {
@@ -87,9 +87,9 @@ module.exports.delete = async function (req, res) {
                             }
                         }
                     }
-            
+
                     const result = compressArray(arrayExercises);
-                    for( let exercise of result){
+                    for (let exercise of result) {
                         await Base.findByIdAndUpdate(
                             { _id: exercise.value },
                             { $inc: { use: -exercise.count } },
@@ -161,6 +161,21 @@ module.exports.updateUsers = async function (req, res) {
             { $push: { users: req.user.id } },
             { new: true }
         );
+
+        const document = await Training.findOne({ key: req.body.key });
+
+        await new Training({
+            owner: req.user.id,
+            users: req.user.id,
+            name: document.name,
+            description: document.description,
+            date: document.date,
+            countWeek: document.countWeek,
+            countDay: document.countDay,
+            weeks: document.weeks,
+            image: document.image,
+            key: generate(17)
+        }).save();
 
         if (training.nModified == 0) {
             return res.status(406).json({ message: 'Activation is not possible!' });

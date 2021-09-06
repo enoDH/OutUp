@@ -1,0 +1,33 @@
+<div class="row">
+  <h5 class="col s12 m10 offset-m1 l6 
+      offset-l3 xl6 offset-xl3 center-align 
+      create-training z-depth-5">Calendar</h5>
+
+  <div *ngIf="workout; else loader">
+    <div *ngFor="let weeks of workout.weeks; let i = index">
+      <div class="training-week col s12 m12 l12 xl12 z-depth-5">
+
+        <div class="black-field">
+          <h6>Week #{{i+1}}</h6>
+        </div>
+        <div class="col s12 m5 l5 xl5 workout-day" *ngFor="let day of workout.weeks[i].days; let j = index">
+          <a [routerLink]="['/exercises']" [state]="{ workoutId: workout._id, dayId: day._id}">Day #{{j+1}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loader>
+    <app-preloader-v1></app-preloader-v1>
+  </ng-template>
+</div>
+
+<div class="fixed-action-btn z-depth-5" #floating_btn>
+  <a class="btn-floating btn-large red">
+    <i class="large material-icons">settings</i>
+  </a>
+  <ul>
+    <li><a class="btn-floating blue" routerLink="/editworkout" [state]="{data: id}"><i class="material-icons">create</i></a></li>
+    <li><a class="btn-floating orange" (click)="copyKey()"><i class="material-icons">vpn_key</i></a></li>
+    <li><a class="btn-floating red" (click)="delete()"><i class="material-icons">delete_forever</i></a></li>
+  </ul>
+</div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../interfaces';
+import { Message, User } from '../interfaces';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -36,6 +36,10 @@ export class AuthService {
     return this._token;
   }
 
+  getUser(): Observable<any> {
+    return this._http.get<any>('/api/auth/user');
+  }
+
   isAuthenticated(): boolean {
     return !!this._token;
   }
@@ -43,5 +47,17 @@ export class AuthService {
   loguot(): void {
     this.setToken(null);
     localStorage.clear();
+  }
+
+  getConfirm(): Observable<any> {
+    return this._http.get<any>('/api/auth/confirm');
+  }
+
+  checkEmail(data: string): Observable<any> {
+    return this._http.get<any>(`/api/auth/check/${data}`);
+  }
+
+  resetPassword(id: string, password: string): Observable<Message> {
+    return this._http.patch<Message>(`/api/auth/reset/${id}`, { password });
   }
 }

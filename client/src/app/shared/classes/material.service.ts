@@ -1,4 +1,4 @@
-import { ElementRef, Injectable, QueryList } from '@angular/core';
+import { ElementRef, Injectable } from '@angular/core';
 
 declare var M;
 

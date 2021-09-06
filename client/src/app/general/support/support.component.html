@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col s12 m10 offset-m1 create-training">
+        <h4 class="center-align">What's wrong?</h4>
+        <div class="row">
+            <form class="col s10 offset-s1" [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="theme" type="text" class="validate"
+                            [ngClass]="{'invalid': form.get('theme').invalid && form.get('theme').touched}"
+                            formControlName="theme">
+                        <label for="theme">Theme</label>
+                        <span class="helper-text red-text"
+                            *ngIf="form.get('theme').invalid && form.get('theme').touched">
+                            <span *ngIf="form.get('theme').errors['required']">
+                                The theme field must be filled!
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textarea" class="materialize-textarea validate" maxlength="720"
+                            [ngClass]="{'invalid': form.get('description').invalid && form.get('description').touched}"
+                            formControlName="description"></textarea>
+                        <label for="textarea2">Description</label>
+                        <span class="helper-text red-text"
+                            *ngIf="form.get('description').invalid && form.get('description').touched">
+                            <span *ngIf="form.get('description').errors['required']">
+                                The description field must be filled!
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" [disabled]="form.invalid || form.disabled" class="btn_login col s10 offset-s1 m8 offset-m2 
+                    l8 offset-l2 xl8 offset-xl2 z-depth-4">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="col s12 m10 offset-m1 create-training">
+        <h5 class="center-align">Support Us</h5>
+        <blockquote>OutUp is an open source project that is completely free to use.
+            We hope you have enjoyed using OutUp and if you feel like it has helped you
+            out and want to support the team you can help us by donating or backing us
+            on Patreon. Any amount would help support and continue
+            development on this project and is greatly appreciated.</blockquote>
+        <a href="{{patreonUrl}}"><img class="col s4 offset-s1 support-us" src="{{patreonImgPath}}" alt="Patreon"></a>
+        <a href="{{payPalUrl}}"><img class="col s4 offset-s2 support-us" src="{{payPalImgPath}}" alt="PayPal"></a>
+    </div>
+</div>

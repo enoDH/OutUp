@@ -13,7 +13,7 @@ module.exports.createSupportRequest = async function (req, res) {
     } catch (e) {
         errorHandler(res, e);
     }
-}
+};
 
 module.exports.getAllSupportRequest = async function (req, res) {
     try {
@@ -23,7 +23,7 @@ module.exports.getAllSupportRequest = async function (req, res) {
     } catch (e) {
         errorHandler(res, e);
     }
-}
+};
 
 module.exports.getSupportRequest = async function (req, res) {
     try {
@@ -33,7 +33,7 @@ module.exports.getSupportRequest = async function (req, res) {
     } catch (e) {
         errorHandler(res, e);
     }
-}
+};
 
 module.exports.deleteSupportRequest = async function (req, res) {
     try {
@@ -43,4 +43,4 @@ module.exports.deleteSupportRequest = async function (req, res) {
     } catch (e) {
         errorHandler(res, e);
     }
-}
+};

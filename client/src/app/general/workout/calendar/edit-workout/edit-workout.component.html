@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col s12">
+        <div class="col s6">
+            <a #description class="col s12 btn_editworkout" routerLink="description" [state]="{data: id}" (click)="changer(0)">Edit
+                description</a>
+        </div>
+        <div class="col s6">
+            <a #plan class="col s12 btn_editworkout" routerLink="plan" [state]="{data: id}" (click)="changer(1)">Edit training plan</a>
+        </div>
+    </div>
+</div>
+<div *ngIf="isClick == false" class="col s12">
+    <div class="center">
+        <h4 class="clr-White">Choose what you want to change!</h4>
+    </div>
+</div>
+<router-outlet></router-outlet>

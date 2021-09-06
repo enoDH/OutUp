@@ -17,7 +17,7 @@ module.exports.createExercise = async function (req, res) {
     } catch (e) {
         errorHandler(res, e);
     }
-}
+};
 
 module.exports.getAllExercises = async function (req, res) {
     try {
@@ -27,7 +27,7 @@ module.exports.getAllExercises = async function (req, res) {
     } catch (e) {
         errorHandler(res, e);
     }
-}
+};
 
 module.exports.getExercise = async function (req, res) {
     try {
@@ -37,7 +37,7 @@ module.exports.getExercise = async function (req, res) {
     } catch (e) {
         errorHandler(res, e);
     }
-}
+};
 
 module.exports.deleteExercise = async function (req, res) {
     try {
@@ -59,7 +59,7 @@ module.exports.deleteExercise = async function (req, res) {
     } catch (e) {
         errorHandler(res, e);
     }
-}
+};
 
 module.exports.update = async function (req, res) {
     try {
@@ -93,4 +93,4 @@ module.exports.update = async function (req, res) {
     } catch (e) {
         errorHandler(res, e);
     }
-}
+};

@@ -20,6 +20,15 @@ a{
     color: #FC4E4E;
 }
 
+.a-forgot {
+    color: #AAAAAA;
+}
+
+.a-forgot:hover {
+    color: #FC4E4E;
+    cursor: pointer;
+}
+
 .black-field{
     display: block;
     color: #FFFFFF;
@@ -182,6 +191,30 @@ a{
     cursor: pointer;
 }
 
+.btn_send{
+    padding: 0;
+    background:none;
+    color: #d91e36;
+    border-style: none;
+    margin-top: 10.5px;
+}
+
+.btn_send:hover{
+    padding: 0;
+    background:none;
+    color: #3E885B;
+    border-style: none;
+    margin-top: 10.5px;
+}
+
+.btn_send:disabled{
+    padding: 0;
+    background:none;
+    color: #161616;
+    border-style: none;
+    margin-top: 10.5px;
+}
+
 .create-training{
     margin-top: 1%;
     background-color:#2B2B2B;
@@ -277,8 +310,83 @@ select{
     border-radius: 50px;
 }
 
+.chatForm{
+    background-color: #212121;
+    border-radius: 20px;
+    margin-top: 5%;
+    width: 100%;
+    height:82vh;
+}
+
+.chatField{
+    border-radius: 10px;
+    padding: 1%;
+    margin: 1%;
+    width: 98%;
+    height: 68vh;
+    background-color: #161616;
+}
+
+.overFlow{
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* width */
+.overFlow::-webkit-scrollbar {
+    width: 0px;
+}
+
+.message{
+    color: #d91e36;
+    background: #212121;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 5px;
+    padding: 5px;
+}
+
+.my-message{
+    color: #d91e36;
+    background: #212121;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 5px;
+    padding: 5px;
+    margin-left: auto;
+}
+
+.message p{
+    margin: 0;
+}
+
+.my-message p{
+    margin: 0;
+}
+
+.my-message:last-child{
+    color: #FFFFFF;
+}
+
+.message:last-child{
+    color: #FFFFFF;
+}
+
 .clr-White{
     color: #FFFFFF;
+}
+
+.clr-Gray {
+    color: #AAAAAA;
+}
+
+.row .col.padding_top_0{
+    padding-top: 0;
+}
+
+.row .col.padding_bottom_0{
+    padding-bottom: 0;
 }
 
 .activation-key{
@@ -291,6 +399,10 @@ select{
 
 .input-act-k{
     text-align: center;
+}
+
+.input-field {
+    margin-top: 0;;
 }
 
  /* preloader_v1 start */

@@ -1,3 +1,16 @@
+## Added chat - OutUp v0.1.0
+
+### Features
+* Added global chat
+* Added https connection
+* Added the ability to recover the password
+
+### Bug Fixes
+* Fixed issue with copying key(https)
+* Fixed a bug with creating a workout without exercises
+
+Dependencies updated.
+
 ## Dependencies updated - OutUp v0.0.8b
 
 Dependencies updated. Angular 12 available!

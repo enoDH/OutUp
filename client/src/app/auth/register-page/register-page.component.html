@@ -1,0 +1,55 @@
+<div class="row">
+    <form 
+    [formGroup]="form" 
+    (ngSubmit)="onSubmit()"
+        class="col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4 center-align z-depth-5 register-form">
+        <h1 style="color: #FFFFFF; margin: 1.68rem 0 1.68rem 0;">OutUp</h1>
+        <div>
+            <div class="input-field col s11">
+                <i class="material-icons prefix">assignment_ind</i>
+                <input id="icon_name" type="text" class="validate" formControlName="name"
+                    [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
+                <label for="icon_name">Name</label>
+                <span *ngIf="form.get('name').invalid && form.get('name').touched" class="helper-text red-text">
+                    <span *ngIf="form.get('name').errors['required']">The name field must be filled!</span>
+                </span>
+            </div>
+            <div class="input-field col s11">
+                <i class="material-icons prefix">account_circle</i>
+                <input formControlName="login"
+                    [ngClass]="{'invalid': form.get('login').invalid && form.get('login').touched}" id="icon_login"
+                    type="text" class="validate">
+                <label for="icon_login">Login</label>
+                <span *ngIf="form.get('login').invalid && form.get('login').touched" class="helper-text red-text">
+                    <span *ngIf="form.get('login').errors['required']">The login field must be filled!</span>
+                </span>
+            </div>
+            <div class="input-field col s11">
+                <i class="material-icons prefix">email</i>
+                <input formControlName="email"
+                    [ngClass]="{'invalid': form.get('email').invalid && form.get('email').touched}" id="icon_email"
+                    type="email" class="validate">
+                <label for="icon_email">Email</label>
+                <span *ngIf="form.get('email').invalid && form.get('email').touched" class="helper-text red-text">
+                    <span *ngIf="form.get('email').errors['required']">The email field must be filled!</span>
+                </span>
+            </div>
+            <div class="input-field col s11">
+                <i class="material-icons prefix">lock</i>
+                <input formControlName="password"
+                    [ngClass]="{'invalid': form.get('password').invalid && form.get('password').touched}"
+                    id="icon_password" type="password" class="validate">
+                <label for="icon_password">Password</label>
+                <span *ngIf="form.get('password').invalid && form.get('password').touched" class="helper-text red-text">
+                    <span *ngIf="form.get('password').errors['required']">The password field must be filled!</span>
+                    <span
+                        *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">
+                        Invalid password!
+                    </span>
+                </span>
+            </div>
+            <button class="btn_login col s10 offset-s1 m8 offset-m2 z-depth-4" type="submit"
+                [disabled]="form.invalid || form.disabled">Register</button>
+        </div>
+    </form>
+</div>

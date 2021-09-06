@@ -1,7 +1,13 @@
 export interface User {
     name: string,
     login: string,
+    email: string,
     password: string
+}
+
+export interface UserLite {
+    name: string,
+    user: string
 }
 
 export interface Base {

@@ -1,8 +1,8 @@
-module.exports = function generate() {
+module.exports = function generate(length) {
     let key = '';
     const str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < length; i++) {
         key += str[getRandomInRange(0, 61)];
     }
 

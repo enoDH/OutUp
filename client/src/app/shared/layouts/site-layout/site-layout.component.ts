@@ -15,6 +15,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   links = [
     { url: '/workout', name: 'Workout' },
     { url: '/base', name: 'Base' },
+    { url: '/chat', name: 'Chat' },
     { url: '/support', name: 'Support' }
   ];
 

@@ -1,0 +1,90 @@
+<div class="row">
+    <h5 class="col s12 m10 offset-m1 l6 
+    offset-l3 center-align 
+    create-training z-depth-5">Video database</h5>
+
+    <form class="col s12 add-video-database z-depth-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="col s12 m6">
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <input id="training_name" type="text" class="validate" formControlName="name"
+                        [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
+                    <label for="training_name">Name</label>
+                    <span class="helper-text red-text" *ngIf="form.get('name').invalid && form.get('name').touched">
+                        <span *ngIf="form.get('name').errors['required']">
+                            The name field must be filled!
+                        </span>
+                    </span>
+                </div>
+                <div class="col s12 file-field input-field">
+                    <div class="btn">
+                        <span>File</span>
+                        <input type="file" (change)="onFileSelect($event)" accept=".mp4"
+                            [ngClass]="{'invalid': form.get('video').invalid && form.get('video').touched}"
+                            [disabled]="form.disabled" formControlName="video">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" #inputRef>
+                        <span class="helper-text red-text"
+                            *ngIf="form.get('video').invalid && form.get('video').touched">
+                            <span *ngIf="form.get('video').errors['required']">
+                                The video field must be filled!
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6">
+            <div *ngIf="videoLoading == false; else loading">
+                <video *ngIf="videoPreview; else view" class="col s12 responsive-video" controls>
+                    <source [src]="videoPreview" type="video/mp4">
+                </video>
+                <ng-template #view>
+                    <video class="col s12 responsive-video" controls></video>
+                </ng-template>
+            </div>
+            <ng-template #loading>
+                <app-loader-v1></app-loader-v1>
+            </ng-template>
+
+        </div>
+        <div class="col s12">
+            <button type="submit" [disabled]="form.invalid || form.disabled || !videoPreview || videoLoading"
+                class="btn_login col s8 offset-s2 m6 offset-m3 l4 offset-l4 z-depth-4">Add
+                video</button>
+        </div>
+    </form>
+
+    <div *ngIf="base$ | async as bases; else preloader_v1" class="col s12 add-video-database z-depth-5">
+        <table class="video-table" *ngIf="bases.length !== 0; else empty">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Video</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let base of bases">
+                    <td>{{base.name}}</td>
+                    <td>{{base.video}}</td>
+                    <td><button class="btn_edit td_btn" (click)="editExercise(base._id)"><i
+                                class="material-icons">settings</i></button>
+                        <button class="btn_login" (click)="deleteExercise(base._id)"><i
+                                class="material-icons">delete</i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #empty>
+            <div class="center">
+                <h5>Your exercise list is empty!</h5>
+            </div>
+        </ng-template>
+    </div>
+    <ng-template #preloader_v1>
+        <app-preloader-v1></app-preloader-v1>
+    </ng-template>
+</div>

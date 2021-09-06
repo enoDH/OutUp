@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col s12 m8 offset-m2 l6 offset-l3 center-align z-depth-5 register-form">
+        <h1 style="color: #FFFFFF; margin: 1.68rem 0 1.68rem 0;">OutUp</h1>
+        <h5 class="clr-Gray">Enter the verification code</h5>
+        <p class="clr-Gray">Enter the verification code sent to you in the email</p>
+        <div class="input-field col s11">
+            <i class="material-icons prefix">security</i>
+            <input id="reset" type="text" class="validate" [formControl]="code">
+            <label for="reset">Code</label>
+            <span *ngIf="code.invalid && code.touched" class="helper-text red-text">
+                <span *ngIf="code.errors?.required">The code field must be filled!</span>
+            </span>
+        </div>
+        <button class="btn_login col s10 offset-s1 m8 offset-m2 z-depth-4" (click)="submit()"
+            [disabled]="code.invalid">Confirm</button>
+    </div>
+</div>

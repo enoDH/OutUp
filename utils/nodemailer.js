@@ -11,7 +11,7 @@ module.exports = async function mailer(data) {
                 type: "OAuth2",
                 user: config.outupEmail,
                 refreshToken: config.refreshToken,
-                clientId: config.clientID,
+                clientId: config.CLIENTID,
                 clientSecret: config.clientSecret,
                 accessUrl: config.accessUrl
             },

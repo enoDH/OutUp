@@ -4,6 +4,7 @@ const errorHandler = require('../utils/errorHandler');
 const generate = require('../utils/generator');
 const serverPath = require('../localPath');
 const compressArray = require('../utils/compressArray');
+const setStatuses = require('../utils/setStatusesToTrue');
 
 const fs = require('fs');
 const path = require('path');
@@ -156,6 +157,10 @@ module.exports.updateUsers = async function (req, res) {
             return res.status(412).json({ message: 'Activation is not possible because you already have this workout!' });
         }
 
+        if(req.body.key.length == 17) {
+            return res.status(403).json({ message: 'Activation is not possible!' });
+        }
+
         const training = await Training.updateOne(
             { key: req.body.key },
             { $push: { users: req.user.id } },
@@ -172,7 +177,7 @@ module.exports.updateUsers = async function (req, res) {
             date: document.date,
             countWeek: document.countWeek,
             countDay: document.countDay,
-            weeks: document.weeks,
+            weeks: setStatuses.setStatus(document.weeks),
             image: document.image,
             key: generate(17)
         }).save();

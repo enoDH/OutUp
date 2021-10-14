@@ -4,6 +4,6 @@ module.exports = {
     secret_key: process.env.JWT,
     outupEmail: process.env.OUTUPEMAIL,
     refreshToken: process.env.REFRESHTOKEN,
-    clientID: process.env.CLIENTID,
+    CLIENTID: process.env.CLIENTID,
     clientSecret: process.env.CLIENTSECRET
 };

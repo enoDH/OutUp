@@ -1,3 +1,11 @@
+## Fixed bugs - OutUp v0.1.1
+
+### Bug Fixes
+* Fixed an issue with exercise status in workouts that were obtained by activation
+* Fixed ability to share training after activation
+
+Dependencies updated.
+
 ## Added chat - OutUp v0.1.0
 
 ### Features
